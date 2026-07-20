@@ -306,6 +306,8 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 900px;
   position: relative;
   z-index: 10;
+  margin: 0 auto;
+  text-align: center;
 }
 .hero-badge {
   display: inline-flex;
@@ -345,12 +347,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--text-secondary);
   max-width: 600px;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
   line-height: 1.6;
 }
 
 .hero-btns {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
