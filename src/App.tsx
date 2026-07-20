@@ -242,6 +242,7 @@ const Home = ({ setIsHovering }: any) => {
 
 function AppContent() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [scrolled, setScrolled] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -296,6 +297,14 @@ function AppContent() {
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
   const toggleLanguage = () => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
 
+  const handleNavClick = (item: string) => {
+    navigate('/');
+    setTimeout(() => {
+      if (item === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+      else document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <>
       <div className="bg-grid"></div>
@@ -334,10 +343,8 @@ function AppContent() {
                 onMouseLeave={() => setIsHovering(false)}
               >
                 <button 
-                  onClick={() => {
-                    if (item === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
-                    else document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
-                  }} 
+                  type="button"
+                  onClick={() => handleNavClick(item)} 
                   className="nav-link"
                   style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
                 >
@@ -352,10 +359,10 @@ function AppContent() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <button className="icon-btn" onClick={toggleLanguage} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+            <button type="button" className="icon-btn" onClick={toggleLanguage} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
               <Globe size={18} />
             </button>
-            <button className="icon-btn" onClick={toggleTheme} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+            <button type="button" className="icon-btn" onClick={toggleTheme} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={theme}

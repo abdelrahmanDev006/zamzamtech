@@ -327,9 +327,15 @@ h1, h2, h3, h4, h5, h6 {
 [dir='rtl'] .hero-badge span { margin-right: 0; margin-left: 0.5rem; }
 
 .hero-title {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: min(6vw, 5rem);
+  line-height: 1.1;
   margin-bottom: 1.5rem;
-  line-height: 1.5;
+  letter-spacing: -1px;
+}
+@media (min-width: 992px) {
+  .hero-title {
+    white-space: nowrap;
+  }
 }
 .hero-title span {
   display: block;
