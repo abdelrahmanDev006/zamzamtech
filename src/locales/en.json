@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Advanced Software & Application Solutions",
+    "title": "We Build The Future Of Technology",
+    "description": "ZAMZAM TECH engineers digital ecosystems. We deliver cutting-edge software, native mobile apps, and robust backend architectures tailored to elevate your business and drive scalable growth.",
+    "cta": "Get Started",
+    "secondaryCta": "View Our Work"
+  },
+  "services": {
+    "title": "Elevate Your Business",
+    "subtitle": "What We Offer",
+    "web": "Web Development",
+    "webDesc": "High-performance, scalable web applications built with modern frameworks.",
+    "mobile": "Mobile Apps",
+    "mobileDesc": "Cross-platform and native mobile applications for iOS and Android.",
+    "desktop": "Desktop Apps",
+    "desktopDesc": "High-performance native and cross-platform desktop applications for Windows, macOS, and Linux.",
+    "uiux": "UI/UX Design",
+    "uiuxDesc": "Beautiful, intuitive, and user-centered design experiences.",
+    "backend": "Backend & Cloud",
+    "backendDesc": "Robust server architecture and scalable cloud infrastructure."
+  },
+  "portfolio": {
+    "title": "Selected Works",
+    "subtitle": "Recent Projects",
+    "title_crm-system": "CRM Management System",
+    "cat_crm-system": "Web Application",
+    "desc_crm-system": "Built with a robust Client-Server architecture for high performance. The system features strict Role-Based Access Control (RBAC) ensuring data confidentiality, alongside full support for handling large datasets and efficient Excel export/import capabilities.",
+    "title_quran-audio-platform": "Quran Audio Platform (PWA)",
+    "cat_quran-audio-platform": "Progressive Web App",
+    "desc_quran-audio-platform": "A Progressive Web App (PWA) specifically designed and developed to play Quran recitations for Sheikh Dr. Ahmed El-Saeed Mandour with a modern, lightning-fast interface. It allows users to browse recitations categorized by year or location, featuring instant search and a seamless listening experience via a custom audio player. The system supports Natural Sort algorithms for Surahs, full offline capabilities, and buttery-smooth, lag-free transitions between Dark and Light themes.",
+    "title_dustout-platform": "DustOut Platform",
+    "cat_dustout-platform": "Web Development",
+    "desc_dustout-platform": "A comprehensive B2B & B2C e-commerce platform designed for supplying professional cleaning equipment. The project focuses on delivering an exceptional user experience through a modern interface featuring sleek Glassmorphism effects and engaging interactive animations. The platform offers lightning-fast browsing as a Single Page Application (SPA), alongside a secure and reliable management system for efficient data and order handling. It is fully responsive across all devices and perfectly optimized for Arabic (RTL) layouts.",
+    "title_supermarket-pos": "SuperMarket POS & Management",
+    "cat_supermarket-pos": "Desktop Application",
+    "desc_supermarket-pos": "A professional, comprehensive, and lightning-fast Desktop Application designed specifically for Point of Sale (POS) and store management. The system operates entirely offline to ensure maximum data security and speed. It seamlessly handles the complete business cycle—from cashier operations and inventory management to tracking client/supplier accounts, calculating shift earnings, and determining precise net profits, complete with direct thermal printer integration.",
+    "title_zamzam-system": "Zamzam Maintenance System",
+    "cat_zamzam-system": "Desktop Application",
+    "desc_zamzam-system": "A comprehensive, offline-first Desktop Application tailored for computer and electronics repair shops to digitize the entire repair workflow from device intake to handover. The system features a modern user interface, a robust ticketing system for precise status tracking, a dynamic analytics dashboard, and built-in invoice printing. Designed for high performance without internet dependency, it ensures maximum data security while offering one-click CSV database backups.",
+    "viewProject": "View Project"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's work together",
+    "location": "Location",
+    "locationValue": "Egypt, Giza",
+    "emailUs": "Email Us",
+    "callUs": "Call Us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "footer": {
+    "rights": "© 2026 ZAMZAM TECH. All rights reserved."
+  }
+}
