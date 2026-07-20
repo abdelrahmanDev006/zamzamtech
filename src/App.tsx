@@ -47,22 +47,24 @@ const Home = ({ setIsHovering }: any) => {
             </motion.p>
             
             <motion.div variants={fadeUp} className="hero-btns">
-              <a 
-                href="#contact" 
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn btn-primary"
+                style={{ fontFamily: 'inherit', fontSize: 'inherit', cursor: 'pointer' }}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
                 {t('hero.cta')} <ArrowRight size={20} />
-              </a>
-              <a 
-                href="#portfolio" 
+              </button>
+              <button 
+                onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn btn-outline"
+                style={{ fontFamily: 'inherit', fontSize: 'inherit', cursor: 'pointer' }}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
                 {t('hero.secondaryCta')}
-              </a>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -331,7 +333,16 @@ function AppContent() {
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
-                <a href={`/#${item}`} className="nav-link">{t(`nav.${item}`)}</a>
+                <button 
+                  onClick={() => {
+                    if (item === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+                    else document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
+                  }} 
+                  className="nav-link"
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
+                >
+                  {t(`nav.${item}`)}
+                </button>
               </motion.li>
             ))}
           </ul>
