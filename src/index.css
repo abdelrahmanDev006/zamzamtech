@@ -227,14 +227,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile Menu & Toggle */
 .mobile-toggle-btn {
-  display: none;
+  display: none !important;
 }
 .mobile-menu {
   display: none;
 }
 @media (max-width: 992px) {
   .mobile-toggle-btn {
-    display: flex;
+    display: flex !important;
     margin-left: 0.5rem;
   }
   [dir='rtl'] .mobile-toggle-btn { margin-left: 0; margin-right: 0.5rem; }
