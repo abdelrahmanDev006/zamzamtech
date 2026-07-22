@@ -216,7 +216,7 @@ const Home = ({ setIsHovering }: any) => {
             </div>
 
             <form className="contact-form" action="https://formsubmit.co/zamzamtech006@gmail.com" method="POST">
-              <input type="hidden" name="_next" value={window.location.origin + window.location.pathname + "#/thank-you"} />
+              <input type="hidden" name="_next" value="https://abdelrahmandev006.github.io/zamzamtech/#/thank-you" />
               <input type="hidden" name="_subject" value="ZAMZAM TECH 🚀 - رسالة جديدة من الموقع" />
               <input type="hidden" name="_template" value="box" />
               <input type="hidden" name="_captcha" value="false" />
