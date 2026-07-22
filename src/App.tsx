@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Globe, Monitor, Smartphone, Palette, Server, ArrowRight, Hexagon, Laptop, Phone } from 'lucide-react';
+import { Sun, Moon, Globe, Monitor, Smartphone, Palette, Server, ArrowRight, Hexagon, Laptop, Phone, Menu, X, ArrowUp, MessageCircle } from 'lucide-react';
 import { projectsData } from './data/projects';
 import ProjectDetails from './pages/ProjectDetails';
 
@@ -240,15 +240,16 @@ const Home = ({ setIsHovering }: any) => {
   );
 };
 
-function AppContent() {
+const AppContent = () => {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState('dark');
   const [isHovering, setIsHovering] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const cursorRef = React.useRef<HTMLDivElement>(null);
   const lightRef = React.useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -261,8 +262,13 @@ function AppContent() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      setShowScrollTop(window.scrollY > 500);
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
+  useEffect(() => {
     let animationFrameId: number;
     const handleMouseMove = (e: MouseEvent) => {
       animationFrameId = requestAnimationFrame(() => {
@@ -284,11 +290,9 @@ function AppContent() {
       });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
@@ -298,6 +302,7 @@ function AppContent() {
   const toggleLanguage = () => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
 
   const handleNavClick = (item: string) => {
+    setIsMobileMenuOpen(false);
     navigate('/');
     setTimeout(() => {
       if (item === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -375,8 +380,37 @@ function AppContent() {
                 </motion.div>
               </AnimatePresence>
             </button>
+            <button className="icon-btn mobile-toggle-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </motion.div>
         </div>
+        
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              className="mobile-menu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <ul className="mobile-nav-links">
+                {['home', 'services', 'portfolio', 'contact'].map((item) => (
+                  <li key={item}>
+                    <button 
+                      type="button"
+                      onClick={() => handleNavClick(item)} 
+                      className="mobile-nav-link"
+                    >
+                      {t(`nav.${item}`)}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <Routes>
@@ -410,9 +444,39 @@ function AppContent() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Buttons */}
+      <a 
+        href="https://wa.me/201019688177" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="floating-btn whatsapp-btn"
+        aria-label="Chat on WhatsApp"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        <MessageCircle size={28} />
+      </a>
+
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="floating-btn scroll-top-btn"
+            aria-label="Scroll to top"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            <ArrowUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </>
   );
-}
+};
 
 export default function App() {
   return (
