@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Sun, Moon, Globe, Monitor, Smartphone, Palette, Server, ArrowRight, Hexagon, Laptop, Phone, Menu, X, ArrowUp, MessageCircle } from 'lucide-react';
 import { projectsData } from './data/projects';
 import ProjectDetails from './pages/ProjectDetails';
+import ThankYou from './pages/ThankYou';
 
 const Home = ({ setIsHovering }: any) => {
   const { t, i18n } = useTranslation();
@@ -214,7 +215,8 @@ const Home = ({ setIsHovering }: any) => {
               </div>
             </div>
 
-            <form className="contact-form" action="https://formsubmit.co/zamzamtech006@gmail.com" method="POST" target="_blank">
+            <form className="contact-form" action="https://formsubmit.co/zamzamtech006@gmail.com" method="POST">
+              <input type="hidden" name="_next" value={window.location.origin + window.location.pathname + "#/thank-you"} />
               <input type="hidden" name="_subject" value="ZAMZAM TECH 🚀 - رسالة جديدة من الموقع" />
               <input type="hidden" name="_template" value="box" />
               <input type="hidden" name="_captcha" value="false" />
@@ -416,6 +418,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Home setIsHovering={setIsHovering} />} />
         <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
+        <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
       </Routes>
 
       <footer className="footer">

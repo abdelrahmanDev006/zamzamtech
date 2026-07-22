@@ -48,8 +48,8 @@
     "viewProject": "View Project"
   },
   "contact": {
-    "title": "Get In Touch",
-    "subtitle": "Let's work together",
+    "title": "Get a Free Tech Consultation",
+    "subtitle": "How can we help your business grow?",
     "location": "Location",
     "locationValue": "Egypt, Giza",
     "emailUs": "Email Us",
@@ -61,6 +61,11 @@
     "send": "Send Message"
   },
   "footer": {
-    "rights": "© 2026 ZAMZAM TECH. All rights reserved."
+    "rights": "© 2026 Zamzam Tech. All rights reserved."
+  },
+  "thankYou": {
+    "title": "Thank You for Reaching Out!",
+    "message": "We have successfully received your message. Our team will review it and get back to you shortly to provide your free tech consultation.",
+    "backHome": "Back to Home"
   }
 }
