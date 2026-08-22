@@ -18,8 +18,6 @@
     "subtitle": "What We Offer",
     "web": "Web Development",
     "webDesc": "High-performance, scalable web applications built with modern frameworks.",
-    "mobile": "Mobile Apps",
-    "mobileDesc": "Cross-platform and native mobile applications for iOS and Android.",
     "desktop": "Desktop Apps",
     "desktopDesc": "High-performance native and cross-platform desktop applications for Windows, macOS, and Linux.",
     "uiux": "UI/UX Design",
@@ -27,9 +25,38 @@
     "backend": "Backend & Cloud",
     "backendDesc": "Robust server architecture and scalable cloud infrastructure."
   },
+  "stats": {
+    "projects": "+5",
+    "projectsLabel": "Delivered Systems & Platforms",
+    "offline": "100%",
+    "offlineLabel": "Offline-First & Cloud Ready",
+    "support": "24/7",
+    "supportLabel": "Continuous Technical Support",
+    "uptime": "99.9%",
+    "uptimeLabel": "Ultra-Fast Speed & High Security"
+  },
+  "process": {
+    "title": "How We Turn Ideas Into Reality",
+    "subtitle": "Our Process",
+    "step1_num": "01",
+    "step1_title": "Architecture & Planning",
+    "step1_desc": "In-depth requirement analysis and selecting the ideal architecture for maximum performance and speed.",
+    "step2_num": "02",
+    "step2_title": "UI/UX & Prototyping",
+    "step2_desc": "Crafting sleek, modern, and intuitive user experiences built with the highest design standards.",
+    "step3_num": "03",
+    "step3_title": "Clean Code & High Performance",
+    "step3_desc": "Writing scalable, clean code with robust security and high-throughput databases.",
+    "step4_num": "04",
+    "step4_title": "Deployment & Support",
+    "step4_desc": "Seamless system launch, team onboarding, and continuous maintenance for sustained growth."
+  },
   "portfolio": {
     "title": "Selected Works",
     "subtitle": "Recent Projects",
+    "filterAll": "All",
+    "filterWeb": "Web Apps",
+    "filterDesktop": "Desktop Apps",
     "title_crm-system": "CRM Management System",
     "cat_crm-system": "Web Application",
     "desc_crm-system": "Built with a robust Client-Server architecture for high performance. The system features strict Role-Based Access Control (RBAC) ensuring data confidentiality, alongside full support for handling large datasets and efficient Excel export/import capabilities.",
@@ -45,7 +72,13 @@
     "title_zamzam-system": "Zamzam Maintenance System",
     "cat_zamzam-system": "Desktop Application",
     "desc_zamzam-system": "A comprehensive, offline-first Desktop Application tailored for computer and electronics repair shops to digitize the entire repair workflow from device intake to handover. The system features a modern user interface, a robust ticketing system for precise status tracking, a dynamic analytics dashboard, and built-in invoice printing. Designed for high performance without internet dependency, it ensures maximum data security while offering one-click CSV database backups.",
-    "viewProject": "View Project"
+    "viewProject": "View Project",
+    "features": "Key System Features",
+    "ctaTitle": "Like this system? Let's turn your idea into reality",
+    "ctaDesc": "The Zamzam Tech team is ready to engineer your idea into a fast, secure, and fully customized software solution.",
+    "ctaBtn": "Get a Free Tech Consultation",
+    "clickToZoom": "Click image to zoom",
+    "imageCounter": "Image {{current}} of {{total}}"
   },
   "contact": {
     "title": "Get a Free Tech Consultation",
@@ -58,7 +91,8 @@
     "email": "Email",
     "phone": "Phone Number",
     "message": "Message",
-    "send": "Send Message"
+    "send": "Send Message",
+    "sending": "Sending..."
   },
   "footer": {
     "rights": "© 2026 Zamzam Tech. All rights reserved."

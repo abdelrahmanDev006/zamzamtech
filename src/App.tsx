@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Globe, Monitor, Smartphone, Palette, Server, ArrowRight, Hexagon, Laptop, Phone, Menu, X, ArrowUp, MessageCircle } from 'lucide-react';
+import { 
+  Sun, Moon, Globe, Monitor, Palette, Server, ArrowRight, Hexagon, 
+  Laptop, Phone, Menu, X, ArrowUp, MessageCircle, Layers, ShieldCheck, 
+  Headphones, Zap, Loader2 
+} from 'lucide-react';
 import { projectsData } from './data/projects';
 import ProjectDetails from './pages/ProjectDetails';
 import ThankYou from './pages/ThankYou';
@@ -12,6 +16,12 @@ const Home = ({ setIsHovering }: any) => {
   const { scrollY } = useScroll();
   const opacityHero = useTransform(scrollY, [0, 500], [1, 0]);
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState<'all' | 'web' | 'desktop'>('all');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const filteredProjects = projectsData.filter(
+    p => activeCategory === 'all' || p.category === activeCategory
+  );
 
   const fadeUp: any = {
     hidden: { opacity: 0, y: 60 },
@@ -74,15 +84,47 @@ const Home = ({ setIsHovering }: any) => {
       {/* Marquee */}
       <div className="marquee-container">
         <div className="marquee-content">
-          {['React', 'Node.js', '.NET', 'Next.js', 'PostgreSQL', 'TypeScript', 'AWS', 'Docker', 'Python', 'React Native'].map((tech, i) => (
+          {['React', 'Node.js', '.NET', 'Next.js', 'PostgreSQL', 'TypeScript', 'AWS', 'Docker', 'Python', 'Electron.js'].map((tech, i) => (
             <span key={i} className="marquee-item">{tech}</span>
           ))}
           {/* Duplicate for infinite effect */}
-          {['React', 'Node.js', '.NET', 'Next.js', 'PostgreSQL', 'TypeScript', 'AWS', 'Docker', 'Python', 'React Native'].map((tech, i) => (
+          {['React', 'Node.js', '.NET', 'Next.js', 'PostgreSQL', 'TypeScript', 'AWS', 'Docker', 'Python', 'Electron.js'].map((tech, i) => (
             <span key={`dup-${i}`} className="marquee-item">{tech}</span>
           ))}
         </div>
       </div>
+
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="container">
+          <motion.div 
+            className="stats-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+          >
+            {[
+              { icon: <Layers size={24} />, num: t('stats.projects'), label: t('stats.projectsLabel') },
+              { icon: <ShieldCheck size={24} />, num: t('stats.offline'), label: t('stats.offlineLabel') },
+              { icon: <Headphones size={24} />, num: t('stats.support'), label: t('stats.supportLabel') },
+              { icon: <Zap size={24} />, num: t('stats.uptime'), label: t('stats.uptimeLabel') },
+            ].map((stat, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeUp} 
+                className="stat-card"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                <div className="stat-icon">{stat.icon}</div>
+                <div className="stat-number text-accent">{stat.num}</div>
+                <div className="stat-label">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Services Section */}
       <section id="services" className="section">
@@ -107,7 +149,6 @@ const Home = ({ setIsHovering }: any) => {
           >
             {[
               { icon: <Monitor size={32}/>, title: t('services.web'), desc: t('services.webDesc') },
-              { icon: <Smartphone size={32}/>, title: t('services.mobile'), desc: t('services.mobileDesc') },
               { icon: <Laptop size={32}/>, title: t('services.desktop'), desc: t('services.desktopDesc') },
               { icon: <Palette size={32}/>, title: t('services.uiux'), desc: t('services.uiuxDesc') },
               { icon: <Server size={32}/>, title: t('services.backend'), desc: t('services.backendDesc') },
@@ -128,6 +169,44 @@ const Home = ({ setIsHovering }: any) => {
         </div>
       </section>
 
+      {/* Process Section */}
+      <section id="process" className="section" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+          >
+            <span className="section-subtitle">{t('process.subtitle')}</span>
+            <h2 className="section-title text-accent">{t('process.title')}</h2>
+          </motion.div>
+
+          <motion.div 
+            className="process-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {[1, 2, 3, 4].map((step) => (
+              <motion.div 
+                key={step} 
+                variants={fadeUp} 
+                className="process-card"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                <span className="process-number">{t(`process.step${step}_num`)}</span>
+                <h3 className="process-title">{t(`process.step${step}_title`)}</h3>
+                <p className="process-desc">{t(`process.step${step}_desc`)}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Portfolio Section */}
       <section id="portfolio" className="section">
         <div className="container">
@@ -142,31 +221,64 @@ const Home = ({ setIsHovering }: any) => {
             <h2 className="section-title text-accent">{t('portfolio.title')}</h2>
           </motion.div>
 
+          {/* Portfolio Category Filters */}
+          <motion.div 
+            className="portfolio-filters"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {(['all', 'web', 'desktop'] as const).map((cat) => {
+              const labelKey = cat === 'all' ? 'filterAll' : cat === 'web' ? 'filterWeb' : 'filterDesktop';
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  className={`filter-btn ${isActive ? 'active' : ''}`}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  {t(`portfolio.${labelKey}`)}
+                </button>
+              );
+            })}
+          </motion.div>
+
           <motion.div 
             className="portfolio-grid"
+            layout
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            {projectsData.map((project) => (
-              <motion.div 
-                key={project.id} 
-                variants={fadeUp} 
-                className="portfolio-item"
-                onClick={() => navigate(`/project/${project.id}`)}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <div className="portfolio-img-wrapper">
-                  <img src={project.mainImage} alt={t(`portfolio.title_${project.id}`)} className="portfolio-img" loading="lazy" />
-                </div>
-                <div className="portfolio-overlay">
-                  <span className="portfolio-category">{t(`portfolio.cat_${project.id}`)}</span>
-                  <h3 className="portfolio-title">{t(`portfolio.title_${project.id}`)}</h3>
-                </div>
-              </motion.div>
-            ))}
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project) => (
+                <motion.div 
+                  key={project.id} 
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  className="portfolio-item"
+                  onClick={() => navigate(`/project/${project.id}`)}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  <div className="portfolio-img-wrapper">
+                    <img src={project.mainImage} alt={t(`portfolio.title_${project.id}`)} className="portfolio-img" loading="lazy" />
+                  </div>
+                  <div className="portfolio-overlay">
+                    <span className="portfolio-category">{t(`portfolio.cat_${project.id}`)}</span>
+                    <h3 className="portfolio-title">{t(`portfolio.title_${project.id}`)}</h3>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
@@ -215,7 +327,12 @@ const Home = ({ setIsHovering }: any) => {
               </div>
             </div>
 
-            <form className="contact-form" action="https://formsubmit.co/zamzamtech006@gmail.com" method="POST">
+            <form 
+              className="contact-form" 
+              action="https://formsubmit.co/zamzamtech006@gmail.com" 
+              method="POST"
+              onSubmit={() => setIsSubmitting(true)}
+            >
               <input type="hidden" name="_next" value="https://abdelrahmandev006.github.io/zamzamtech/#/thank-you" />
               <input type="hidden" name="_subject" value="ZAMZAM TECH 🚀 - رسالة جديدة من الموقع" />
               <input type="hidden" name="_template" value="box" />
@@ -227,12 +344,19 @@ const Home = ({ setIsHovering }: any) => {
               <textarea name="4. نص الرسالة (Message)" className="form-input" placeholder={t('contact.message')} required></textarea>
               <button 
                 type="submit"
+                disabled={isSubmitting}
                 className="btn btn-primary" 
-                style={{ width: '100%' }}
+                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
-                {t('contact.send')}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={20} className="animate-spin" /> {t('contact.sending')}
+                  </>
+                ) : (
+                  t('contact.send')
+                )}
               </button>
             </form>
           </motion.div>
@@ -271,6 +395,10 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
+    // Only enable custom cursor mouse tracking on devices with fine pointer (desktop mouse)
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasFinePointer) return;
+
     let animationFrameId: number;
     const handleMouseMove = (e: MouseEvent) => {
       animationFrameId = requestAnimationFrame(() => {
