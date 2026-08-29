@@ -15,6 +15,27 @@ const img = (filename: string) => `${BASE}${filename.replace(/^\//, '')}`;
 
 export const projectsData: ProjectItem[] = [
   {
+    id: 'center-control',
+    category: 'desktop',
+    tech: ['Rust (Tauri v2)', 'React 19', 'TypeScript', 'SQLite (WAL)', 'Tailwind CSS', 'Recharts', 'Telegram Bot API', 'WhatsApp API'],
+    features: [
+      'Ultra-Fast Barcode Attendance Engine (< 100ms)',
+      'Automated WhatsApp & Telegram Notifications',
+      'Hardware Fingerprinting & Anti-Tamper Clock Guard',
+      'Dynamic Pricing, Financial Analytics & Excel Export'
+    ],
+    mainImage: img('project-center-control.jpg'),
+    gallery: [
+      img('center-1.png'),
+      img('center-2.png'),
+      img('center-3.png'),
+      img('center-4.png'),
+      img('center-5.png'),
+      img('center-6.png'),
+      img('center-7.png')
+    ]
+  },
+  {
     id: 'flow-accounting',
     category: 'desktop',
     tech: ['Electron 33', 'React 18', 'TypeScript 5', 'Better-SQLite3 (WAL)', 'Ant Design v5', 'Zustand v5', 'Express 5 (LAN)', 'bcryptjs'],

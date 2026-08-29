@@ -26,7 +26,7 @@
     "backendDesc": "Robust server architecture and scalable cloud infrastructure."
   },
   "stats": {
-    "projects": "+6",
+    "projects": "+7",
     "projectsLabel": "Delivered Systems & Platforms",
     "offline": "100%",
     "offlineLabel": "Offline-First & Cloud Ready",
@@ -57,6 +57,9 @@
     "filterAll": "All",
     "filterWeb": "Web Apps",
     "filterDesktop": "Desktop Apps",
+    "title_center-control": "Center Control System",
+    "cat_center-control": "Desktop Application & Education ERP",
+    "desc_center-control": "A high-performance, native desktop application engineered with Rust and Tauri v2, specifically tailored for educational centres, private schools, and tutoring hubs. Operating with a 100% Offline-First architecture, it ensures lightning-fast execution and minimal memory footprint (< 80MB RAM).\n\nThe system seamlessly integrates sub-100ms barcode attendance tracking, automated multi-tier pricing and tuition collection, smart instant messaging to parents via WhatsApp and Telegram Bot API, dynamic scheduling, comprehensive financial analytics with Excel export, and enterprise-grade security powered by hardware fingerprinting and anti-tamper clock guards.",
     "title_flow-accounting": "Flow Accounting & Business Management",
     "cat_flow-accounting": "Desktop Application & ERP",
     "desc_flow-accounting": "A comprehensive, advanced ERP and Point-of-Sale (POS) management system designed for retail stores, wholesale exhibitions, and SMBs. Engineered with a 100% Offline-First architecture, it ensures ultra-fast local execution with guaranteed ACID transaction safety powered by Better-SQLite3 with WAL mode.\n\nThe system features built-in LAN sharing (Express 5) to connect multiple cashiers and mobile devices over internal Wi-Fi, an instant 'Privacy Mode' to mask sensitive figures, full shift & inventory auditing, multi-payment invoices, supplier/client statement tracking, and automatic Profit & Loss (P&L) reporting.",
