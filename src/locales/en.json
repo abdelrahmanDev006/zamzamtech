@@ -26,7 +26,7 @@
     "backendDesc": "Robust server architecture and scalable cloud infrastructure."
   },
   "stats": {
-    "projects": "+5",
+    "projects": "+6",
     "projectsLabel": "Delivered Systems & Platforms",
     "offline": "100%",
     "offlineLabel": "Offline-First & Cloud Ready",
@@ -57,6 +57,9 @@
     "filterAll": "All",
     "filterWeb": "Web Apps",
     "filterDesktop": "Desktop Apps",
+    "title_flow-accounting": "Flow Accounting & Business Management",
+    "cat_flow-accounting": "Desktop Application & ERP",
+    "desc_flow-accounting": "A comprehensive, advanced ERP and Point-of-Sale (POS) management system designed for retail stores, wholesale exhibitions, and SMBs. Engineered with a 100% Offline-First architecture, it ensures ultra-fast local execution with guaranteed ACID transaction safety powered by Better-SQLite3 with WAL mode.\n\nThe system features built-in LAN sharing (Express 5) to connect multiple cashiers and mobile devices over internal Wi-Fi, an instant 'Privacy Mode' to mask sensitive figures, full shift & inventory auditing, multi-payment invoices, supplier/client statement tracking, and automatic Profit & Loss (P&L) reporting.",
     "title_crm-system": "CRM Management System",
     "cat_crm-system": "Web Application",
     "desc_crm-system": "Built with a robust Client-Server architecture for high performance. The system features strict Role-Based Access Control (RBAC) ensuring data confidentiality, alongside full support for handling large datasets and efficient Excel export/import capabilities.",

@@ -7,7 +7,34 @@ export interface ProjectItem {
   features?: string[];
 }
 
+const BASE = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const img = (filename: string) => `${BASE}${filename.replace(/^\//, '')}`;
+
 export const projectsData: ProjectItem[] = [
+  {
+    id: 'flow-accounting',
+    category: 'desktop',
+    tech: ['Electron 33', 'React 18', 'TypeScript 5', 'Better-SQLite3 (WAL)', 'Ant Design v5', 'Zustand v5', 'Express 5 (LAN)', 'bcryptjs'],
+    features: [
+      '100% Offline-First Architecture & LAN Sharing',
+      'Robust tx() ACID Transactions Wrapper',
+      'High Security & Privacy Mode (👁️)',
+      'POS, Shifts, Inventory & Instant P&L Statements'
+    ],
+    mainImage: img('project-flow.jpg'),
+    gallery: [
+      img('flow-1.png'),
+      img('flow-2.png'),
+      img('flow-3.png'),
+      img('flow-4.png'),
+      img('flow-5.png'),
+      img('flow-6.png'),
+      img('flow-7.png')
+    ]
+  },
   {
     id: 'crm-system',
     category: 'web',
@@ -18,13 +45,13 @@ export const projectsData: ProjectItem[] = [
       'Large Datasets Handling & Excel Export',
       'Secure Authentication & Token Management'
     ],
-    mainImage: '/project-crm.png',
+    mainImage: img('project-crm.png'),
     gallery: [
-      '/crm-1.png',
-      '/crm-2.png',
-      '/crm-3.png',
-      '/crm-4.png',
-      '/crm-5.png'
+      img('crm-1.png'),
+      img('crm-2.png'),
+      img('crm-3.png'),
+      img('crm-4.png'),
+      img('crm-5.png')
     ]
   },
   {
@@ -37,14 +64,14 @@ export const projectsData: ProjectItem[] = [
       'Natural Sort Surah Algorithm',
       'Instant Search & Responsive UI'
     ],
-    mainImage: '/project-quran.png',
+    mainImage: img('project-quran.png'),
     gallery: [
-      '/quran-1.png',
-      '/quran-2.png',
-      '/quran-3.png',
-      '/quran-4.png',
-      '/quran-5.png',
-      '/quran-6.png'
+      img('quran-1.png'),
+      img('quran-2.png'),
+      img('quran-3.png'),
+      img('quran-4.png'),
+      img('quran-5.png'),
+      img('quran-6.png')
     ]
   },
   {
@@ -57,16 +84,16 @@ export const projectsData: ProjectItem[] = [
       'Lightning Fast Single Page Application (SPA)',
       'Optimized RTL & Arabic User Experience'
     ],
-    mainImage: '/project-dustout.png',
+    mainImage: img('project-dustout.png'),
     gallery: [
-      '/dustout-1.png',
-      '/dustout-2.png',
-      '/dustout-3.png',
-      '/dustout-4.png',
-      '/dustout-5.png',
-      '/dustout-6.png',
-      '/dustout-7.png',
-      '/dustout-8.png'
+      img('dustout-1.png'),
+      img('dustout-2.png'),
+      img('dustout-3.png'),
+      img('dustout-4.png'),
+      img('dustout-5.png'),
+      img('dustout-6.png'),
+      img('dustout-7.png'),
+      img('dustout-8.png')
     ]
   },
   {
@@ -79,17 +106,17 @@ export const projectsData: ProjectItem[] = [
       'Shift Earnings & Net Profit Calculation',
       'Direct Thermal Receipt Printer Support'
     ],
-    mainImage: '/project-pos.png',
+    mainImage: img('project-pos.png'),
     gallery: [
-      '/pos-1.png',
-      '/pos-2.png',
-      '/pos-3.png',
-      '/pos-4.png',
-      '/pos-5.png',
-      '/pos-6.png',
-      '/pos-7.png',
-      '/pos-8.png',
-      '/pos-9.png'
+      img('pos-1.png'),
+      img('pos-2.png'),
+      img('pos-3.png'),
+      img('pos-4.png'),
+      img('pos-5.png'),
+      img('pos-6.png'),
+      img('pos-7.png'),
+      img('pos-8.png'),
+      img('pos-9.png')
     ]
   },
   {
@@ -102,13 +129,13 @@ export const projectsData: ProjectItem[] = [
       'Instant Invoice Generation & Printing',
       'Fast CSV Database Backup & Restore'
     ],
-    mainImage: '/project-zamzam.png',
+    mainImage: img('project-zamzam.png'),
     gallery: [
-      '/zamzam-1.png',
-      '/zamzam-2.png',
-      '/zamzam-3.png',
-      '/zamzam-4.png',
-      '/zamzam-5.png'
+      img('zamzam-1.png'),
+      img('zamzam-2.png'),
+      img('zamzam-3.png'),
+      img('zamzam-4.png'),
+      img('zamzam-5.png')
     ]
   }
 ];

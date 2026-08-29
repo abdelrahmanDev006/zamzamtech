@@ -475,7 +475,7 @@ const AppContent = () => {
             transition={{ duration: 0.5 }}
           >
             <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-              <img src="/logo.png" alt="ZAMZAM TECH" className="brand-logo" style={{ height: '110px', objectFit: 'contain' }} />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '110px', objectFit: 'contain' }} />
             </Link>
           </motion.div>
           <ul className="nav-links">
@@ -564,7 +564,7 @@ const AppContent = () => {
         <div className="container">
           <div className="footer-content">
             <div className="logo-text">
-              <img src="/logo.png" alt="ZAMZAM TECH" className="brand-logo" style={{ height: '140px', objectFit: 'contain' }} />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '140px', objectFit: 'contain' }} />
             </div>
             <div className="social-links">
               <a href="https://www.linkedin.com/company/zamzam-tech-software" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
