@@ -98,12 +98,12 @@ export const projectsData: ProjectItem[] = [
   {
     id: 'dustout-platform',
     category: 'web',
-    tech: ['React 19', 'Vite', 'Vanilla CSS3', 'React Router v7', 'Supabase', 'Nginx'],
+    tech: ['React 19', 'Vite 8', 'React Router v7', 'Custom CSS Design System', 'Supabase', 'REST API', 'Meta / TikTok / Snap Pixels', 'Microsoft Clarity'],
     features: [
-      'B2B & B2C Product Showcase & Catalog',
-      'Glassmorphic & Sleek Modern Aesthetics',
-      'Lightning Fast Single Page Application (SPA)',
-      'Optimized RTL & Arabic User Experience'
+      'Dual-Mode E-Commerce (Direct Sale & Monthly Rental)',
+      'Interactive Slide-Over Cart & Instant Order Form',
+      'Comprehensive Admin Dashboard for Orders & Products',
+      'Multi-Platform Ad Pixel Injections & Session Analytics'
     ],
     mainImage: img('project-dustout.png'),
     gallery: [
@@ -114,7 +114,9 @@ export const projectsData: ProjectItem[] = [
       img('dustout-5.png'),
       img('dustout-6.png'),
       img('dustout-7.png'),
-      img('dustout-8.png')
+      img('dustout-8.png'),
+      img('dustout-9.png'),
+      img('dustout-10.png')
     ]
   },
   {
