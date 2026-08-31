@@ -310,7 +310,12 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
                 <button 
                   type="button"
                   className="lightbox-close-btn" 
-                  onClick={() => setIsLightboxOpen(false)}
+                  onClick={() => {
+                    setIsHovering(false);
+                    setIsLightboxOpen(false);
+                  }}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
                   aria-label="Close Lightbox"
                 >
                   <X size={24} />
@@ -321,6 +326,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
                 type="button"
                 className="lightbox-nav-btn lightbox-nav-prev" 
                 onClick={prevLightboxImage}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
                 aria-label="Previous image"
               >
                 <ChevronLeft size={28} />
@@ -343,6 +350,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
                 type="button"
                 className="lightbox-nav-btn lightbox-nav-next" 
                 onClick={nextLightboxImage}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
                 aria-label="Next image"
               >
                 <ChevronRight size={28} />

@@ -64,7 +64,7 @@ body[dir='rtl'] {
   border-radius: 50%;
   background-color: var(--accent);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999999;
   mix-blend-mode: normal;
   transition: width 0.2s, height 0.2s, background-color 0.2s;
   transform: translate(-50%, -50%);
