@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
 import { 
   Sun, Moon, Globe, Monitor, Palette, Server, ArrowRight, Hexagon, 
   Laptop, Phone, Menu, X, ArrowUp, MessageCircle, Layers, ShieldCheck, 
@@ -11,7 +11,11 @@ import { projectsData } from './data/projects';
 import ProjectDetails from './pages/ProjectDetails';
 import ThankYou from './pages/ThankYou';
 
-const Home = ({ setIsHovering }: any) => {
+interface HomeProps {
+  setIsHovering: (val: boolean) => void;
+}
+
+const Home: React.FC<HomeProps> = ({ setIsHovering }) => {
   const { t, i18n } = useTranslation();
   const { scrollY } = useScroll();
   const opacityHero = useTransform(scrollY, [0, 500], [1, 0]);
@@ -23,12 +27,12 @@ const Home = ({ setIsHovering }: any) => {
     p => activeCategory === 'all' || p.category === activeCategory
   );
 
-  const fadeUp: any = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } }
   };
   
-  const staggerContainer: any = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
   };
@@ -157,6 +161,13 @@ const Home = ({ setIsHovering }: any) => {
                 key={idx} 
                 variants={fadeUp} 
                 className="service-card"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+                }}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -408,15 +419,6 @@ const AppContent = () => {
         if (lightRef.current) {
           lightRef.current.style.transform = `translate3d(${e.clientX - 300}px, ${e.clientY - 300}px, 0)`;
         }
-        
-        const cards = document.querySelectorAll('.service-card');
-        cards.forEach((card) => {
-          const rect = (card as HTMLElement).getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-          (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
-        });
       });
     };
 
@@ -445,10 +447,19 @@ const AppContent = () => {
   const handleNavClick = (item: string) => {
     setIsMobileMenuOpen(false);
     navigate('/');
-    setTimeout(() => {
-      if (item === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
-      else document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    const tryScroll = (attempts = 0) => {
+      if (item === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const el = document.getElementById(item);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (attempts < 5) {
+        setTimeout(() => tryScroll(attempts + 1), 60);
+      }
+    };
+    setTimeout(() => tryScroll(), 50);
   };
 
   return (

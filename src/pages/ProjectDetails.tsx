@@ -137,9 +137,15 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
 
   const handleContactRedirect = () => {
     navigate('/');
-    setTimeout(() => {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (attempts < 5) {
+        setTimeout(() => tryScroll(attempts + 1), 60);
+      }
+    };
+    setTimeout(() => tryScroll(), 50);
   };
 
   return (
