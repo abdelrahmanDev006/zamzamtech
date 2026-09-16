@@ -580,6 +580,7 @@ const AppContent = () => {
         <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
         <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
         <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} />} />
+        <Route path="*" element={<Home setIsHovering={setIsHovering} />} />
       </Routes>
 
       {!isPresentation && (
