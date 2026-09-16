@@ -30,7 +30,14 @@
 [data-theme='dark'] .deck-main-logo,
 [data-theme='dark'] .deck-contact-logo,
 [data-theme='dark'] .deck-print-logo {
-  filter: invert(1) hue-rotate(180deg) brightness(1.2);
+  filter: invert(1) hue-rotate(180deg) brightness(1.35) drop-shadow(0 8px 25px rgba(227, 36, 43, 0.35)) !important;
+}
+
+[data-theme='light'] .brand-logo,
+[data-theme='light'] .deck-main-logo,
+[data-theme='light'] .deck-contact-logo,
+[data-theme='light'] .deck-print-logo {
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.08)) !important;
 }
 
 * {
