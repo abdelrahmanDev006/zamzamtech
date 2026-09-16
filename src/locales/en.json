@@ -193,7 +193,7 @@
         "stat3Label": "Privacy Mode 👁️"
       },
       "7": {
-        "tag": "Case Study 3",
+        "tag": "Case Study 3 • E-Commerce",
         "title": "DustOut E-Commerce Platform",
         "subtitle": "Dual-Mode E-Commerce & High-Converting Marketing Hub",
         "desc": "An all-in-one digital platform for cleaning equipment featuring dual-mode direct sales and monthly equipment rentals, slide-over interactive cart, complete admin dashboard (CRUD), and multi-platform ad pixel tracking (Meta, TikTok, Snapchat, Clarity).",
@@ -206,6 +206,58 @@
         "stat3Label": "Page Load Time"
       },
       "8": {
+        "tag": "Case Study 4 • Cloud Enterprise",
+        "title": "Smart CRM & Client System",
+        "subtitle": "High-Performance Client-Server CRM with RBAC & Fast APIs",
+        "desc": "A robust cloud web application built with a scalable Client-Server architecture. Features strict Role-Based Access Control (RBAC) to safeguard confidential data, large dataset streaming, and instant Excel report exports.",
+        "tech": "React • Node.js • Express.js • PostgreSQL • Prisma ORM • Zod • JWT • Excel Engine",
+        "stat1": "RBAC",
+        "stat1Label": "Role-Based Access",
+        "stat2": "PostgreSQL",
+        "stat2Label": "Relational Data",
+        "stat3": "Instant",
+        "stat3Label": "Excel Export"
+      },
+      "9": {
+        "tag": "Case Study 5 • Retail & POS",
+        "title": "Smart Supermarket & Retail POS",
+        "subtitle": "Fast Offline-First POS, Shift Earnings & Thermal Receipts",
+        "desc": "A lightning-fast, 100% offline desktop POS application engineered for supermarkets and retail stores. Features fast barcode lookups, direct thermal receipt printing, shift reconciliation, and real-time net profit analytics.",
+        "tech": "React.js • Electron.js • SQLite3 • Tailwind CSS • Thermal Printer Engine",
+        "stat1": "100%",
+        "stat1Label": "100% Offline",
+        "stat2": "Thermal",
+        "stat2Label": "Direct Receipts",
+        "stat3": "P&L",
+        "stat3Label": "Shift Net Profit"
+      },
+      "10": {
+        "tag": "Case Study 6 • Repair & Workshop",
+        "title": "Zamzam Repair & Workshop Hub",
+        "subtitle": "End-to-End Repair Lifecycle, Ticketing & Billing Management",
+        "desc": "A specialized desktop system for electronics and computer repair centers. Digitizes the full repair lifecycle from check-in to handover, tracking parts, repair costs, technician assignments, printable invoices, and CSV database backups.",
+        "tech": "React.js • Electron.js • SQLite3 • Vanilla CSS • CSV Backup Engine",
+        "stat1": "Tickets",
+        "stat1Label": "Device Ticketing",
+        "stat2": "Invoices",
+        "stat2Label": "Printable Invoices",
+        "stat3": "Backup",
+        "stat3Label": "CSV Fast Backup"
+      },
+      "11": {
+        "tag": "Case Study 7 • PWA & Media",
+        "title": "Quran Audio Platform & PWA",
+        "subtitle": "Progressive Web App with Custom Audio Engine & Offline Mode",
+        "desc": "A modern Progressive Web App (PWA) tailored for seamless Quranic audio playback. Features a custom continuous audio player, natural sorting algorithm for surahs, responsive Light/Dark theme, and full offline caching via Service Workers.",
+        "tech": "HTML5/CSS3 • Vanilla JS (ES6+) • PWA • Service Worker • Audio Engine",
+        "stat1": "PWA",
+        "stat1Label": "Installable App",
+        "stat2": "Audio",
+        "stat2Label": "Continuous Player",
+        "stat3": "Offline",
+        "stat3Label": "Service Worker Cache"
+      },
+      "12": {
         "tag": "Key Metrics & Trust",
         "title": "Numbers That Reflect Our Engineering Quality",
         "subtitle": "A Proven Track Record of Stable Deployments",
@@ -222,7 +274,7 @@
         "stat4Title": "Continuous Support & Onboarding",
         "stat4Desc": "Dedicated engineering support, team training, and regular software enhancements."
       },
-      "9": {
+      "13": {
         "tag": "Our Methodology",
         "title": "How We Turn Ideas into Reliable Software",
         "subtitle": "Our End-to-End Development Lifecycle",
@@ -239,7 +291,7 @@
         "step4Title": "Deployment, Training & Support",
         "step4Desc": "On-site installation, employee training, and ongoing proactive maintenance warranties."
       },
-      "10": {
+      "14": {
         "tag": "Start Your Project",
         "title": "Ready to Elevate Your Digital Infrastructure?",
         "subtitle": "Contact the Zamzam Tech team today for a complimentary technical consultation.",
