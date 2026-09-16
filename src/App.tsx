@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
 import { 
@@ -10,6 +10,7 @@ import {
 import { projectsData } from './data/projects';
 import ProjectDetails from './pages/ProjectDetails';
 import ThankYou from './pages/ThankYou';
+import Presentation from './pages/Presentation';
 
 interface HomeProps {
   setIsHovering: (val: boolean) => void;
@@ -387,6 +388,8 @@ const AppContent = () => {
   const cursorRef = React.useRef<HTMLDivElement>(null);
   const lightRef = React.useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isPresentation = location.pathname === '/presentation';
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -446,6 +449,11 @@ const AppContent = () => {
 
   const handleNavClick = (item: string) => {
     setIsMobileMenuOpen(false);
+    if (item === 'presentation') {
+      navigate('/presentation');
+      window.scrollTo(0, 0);
+      return;
+    }
     navigate('/');
     const tryScroll = (attempts = 0) => {
       if (item === 'home') {
@@ -477,126 +485,131 @@ const AppContent = () => {
         style={{ top: 0, left: 0 }}
       ></div>
 
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container navbar-container">
-          <motion.div 
-            className="logo-text"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '110px', objectFit: 'contain' }} />
-            </Link>
-          </motion.div>
-          <ul className="nav-links">
-            {['home', 'services', 'portfolio', 'contact'].map((item, idx) => (
-              <motion.li 
-                key={item}
+      {!isPresentation && (
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+          <div className="container navbar-container">
+            <motion.div 
+              className="logo-text"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '110px', objectFit: 'contain' }} />
+              </Link>
+            </motion.div>
+            <ul className="nav-links">
+              {['home', 'services', 'portfolio', 'presentation', 'contact'].map((item, idx) => (
+                <motion.li 
+                  key={item}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  <button 
+                    type="button"
+                    onClick={() => handleNavClick(item)} 
+                    className={`nav-link ${item === 'presentation' ? 'nav-link-highlight' : ''}`}
+                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
+                  >
+                    {item === 'presentation' ? `✦ ${t(`nav.${item}`)}` : t(`nav.${item}`)}
+                  </button>
+                </motion.li>
+              ))}
+            </ul>
+            <motion.div 
+              className="nav-controls"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <button type="button" className="icon-btn" onClick={toggleLanguage} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                <Globe size={18} />
+              </button>
+              <button type="button" className="icon-btn" onClick={toggleTheme} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={theme}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+              <button className="icon-btn mobile-toggle-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </motion.div>
+          </div>
+          
+          {/* Mobile Menu Overlay */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div 
+                className="mobile-menu"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
+                exit={{ opacity: 0, y: -20 }}
               >
-                <button 
-                  type="button"
-                  onClick={() => handleNavClick(item)} 
-                  className="nav-link"
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
-                >
-                  {t(`nav.${item}`)}
-                </button>
-              </motion.li>
-            ))}
-          </ul>
-          <motion.div 
-            className="nav-controls"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <button type="button" className="icon-btn" onClick={toggleLanguage} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-              <Globe size={18} />
-            </button>
-            <button type="button" className="icon-btn" onClick={toggleTheme} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={theme}
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.div>
-              </AnimatePresence>
-            </button>
-            <button className="icon-btn mobile-toggle-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </motion.div>
-        </div>
-        
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div 
-              className="mobile-menu"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-            >
-              <ul className="mobile-nav-links">
-                {['home', 'services', 'portfolio', 'contact'].map((item) => (
-                  <li key={item}>
-                    <button 
-                      type="button"
-                      onClick={() => handleNavClick(item)} 
-                      className="mobile-nav-link"
-                    >
-                      {t(`nav.${item}`)}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+                <ul className="mobile-nav-links">
+                  {['home', 'services', 'portfolio', 'presentation', 'contact'].map((item) => (
+                    <li key={item}>
+                      <button 
+                        type="button"
+                        onClick={() => handleNavClick(item)} 
+                        className={`mobile-nav-link ${item === 'presentation' ? 'nav-link-highlight' : ''}`}
+                      >
+                        {item === 'presentation' ? `✦ ${t(`nav.${item}`)}` : t(`nav.${item}`)}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      )}
 
       <Routes>
         <Route path="/" element={<Home setIsHovering={setIsHovering} />} />
         <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
         <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
+        <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} />} />
       </Routes>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="logo-text">
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '140px', objectFit: 'contain' }} />
+      {!isPresentation && (
+        <footer className="footer">
+          <div className="container">
+            <div className="footer-content">
+              <div className="logo-text">
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="ZAMZAM TECH" className="brand-logo" style={{ height: '140px', objectFit: 'contain' }} />
+              </div>
+              <div className="social-links">
+                <a href="https://www.linkedin.com/company/zamzam-tech-software" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://github.com/abdelrahmanDev006" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="GitHub" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://wa.me/201000444566?text=مرحباً زمزم تك، أود الحصول على استشارة تقنية مجانية لمشروعي!" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="WhatsApp" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61592211776886" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="Facebook" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+              </div>
             </div>
-            <div className="social-links">
-              <a href="https://www.linkedin.com/company/zamzam-tech-software" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </a>
-              <a href="https://github.com/abdelrahmanDev006" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="GitHub" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-              <a href="https://wa.me/201000444566?text=مرحباً زمزم تك، أود الحصول على استشارة تقنية مجانية لمشروعي!" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="WhatsApp" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61592211776886" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="Facebook" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              </a>
+            <div className="footer-bottom">
+              <p>{t('footer.rights')}</p>
             </div>
           </div>
-          <div className="footer-bottom">
-            <p>{t('footer.rights')}</p>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      )}
 
       {/* Floating Buttons */}
       <a 
