@@ -116,10 +116,12 @@
     "exitFullscreen": "Exit Fullscreen",
     "exit": "Back to Website",
     "previous": "Previous",
-    "next": "Next",
     "slideCounter": "Slide {{current}} of {{total}}",
-    "quickNav": "Jump to Slide",
-    "shortcutsHint": "Use Arrow Keys ➔ or Space to navigate, F for Fullscreen",
+    "shortcutsHint": "Use Arrow Keys ➔ or Space to navigate, F for Fullscreen, G for Grid",
+    "gridOverview": "Slide Grid",
+    "closeGrid": "Close Grid",
+    "laserPointer": "Laser Pointer",
+    "viewProjectDetails": "View Full System Specs",
     "slides": {
       "1": {
         "tag": "Technical & Corporate Overview 2026",
@@ -292,6 +294,19 @@
         "step4Desc": "On-site installation, employee training, and ongoing proactive maintenance warranties."
       },
       "14": {
+        "tag": "Quality Standards, NDA & SLA",
+        "title": "Our Enterprise Quality Commitments",
+        "subtitle": "Security, Source Code Ownership & Long-Term Guarantees for Our Partners",
+        "guarantee1Title": "Non-Disclosure Agreement (NDA)",
+        "guarantee1Desc": "Strict legally binding confidentiality agreements protecting your algorithms, business data, and proprietary workflows 100%.",
+        "guarantee2Title": "Full Source Code Ownership & Docs",
+        "guarantee2Desc": "Complete handover of clean source code and comprehensive architecture documentation (API & DB schemas) with zero vendor lock-in.",
+        "guarantee3Title": "Comprehensive Warranty & SLA Support",
+        "guarantee3Desc": "Full warranty coverage against defects post-launch, paired with proactive maintenance SLAs and continuous enhancements.",
+        "guarantee4Title": "Live Onboarding & Team Training",
+        "guarantee4Desc": "Hands-on staff workshops and video walkthroughs ensuring your operational team operates the system at peak productivity."
+      },
+      "15": {
         "tag": "Start Your Project",
         "title": "Ready to Elevate Your Digital Infrastructure?",
         "subtitle": "Contact the Zamzam Tech team today for a complimentary technical consultation.",

@@ -25,7 +25,15 @@ import {
   Phone,
   Mail,
   MapPin,
-  Send
+  Send,
+  LayoutGrid,
+  Radio,
+  ExternalLink,
+  Lock,
+  FileCode,
+  GraduationCap,
+  CheckCircle2,
+  Layers
 } from 'lucide-react';
 import { projectsData } from '../data/projects';
 
@@ -33,7 +41,7 @@ interface PresentationProps {
   setIsHovering?: (val: boolean) => void;
 }
 
-const TOTAL_SLIDES = 14;
+const TOTAL_SLIDES = 15;
 
 const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
   const { t, i18n } = useTranslation();
@@ -42,6 +50,9 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+  const [showGrid, setShowGrid] = useState(false);
+  const [isLaserMode, setIsLaserMode] = useState(false);
+  const [laserPos, setLaserPos] = useState({ x: -100, y: -100 });
 
   const isRTL = i18n.language === 'ar';
 
@@ -99,6 +110,16 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
     window.print();
   };
 
+  // Laser pointer position tracking
+  useEffect(() => {
+    if (!isLaserMode) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      setLaserPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isLaserMode]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -113,8 +134,14 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         nextSlide();
       } else if (e.key === 'f' || e.key === 'F') {
         toggleFullscreen();
+      } else if (e.key === 'g' || e.key === 'G') {
+        setShowGrid(prev => !prev);
+      } else if (e.key === 'l' || e.key === 'L') {
+        setIsLaserMode(prev => !prev);
       } else if (e.key === 'Escape') {
-        if (isFullscreen) {
+        if (showGrid) {
+          setShowGrid(false);
+        } else if (isFullscreen) {
           setIsFullscreen(false);
         }
       }
@@ -131,7 +158,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
       window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
-  }, [nextSlide, prevSlide, isRTL, isFullscreen]);
+  }, [nextSlide, prevSlide, isRTL, isFullscreen, showGrid]);
 
   // Framer Motion slide variants
   const slideVariants: Variants = {
@@ -403,6 +430,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-lbl">{t('presentation.slides.5.stat3Label')}</span>
                   </div>
                 </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/center-control" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
+                </div>
               </div>
 
               <div className="deck-case-preview">
@@ -454,6 +495,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-val">{t('presentation.slides.6.stat3')}</span>
                     <span className="deck-metric-lbl">{t('presentation.slides.6.stat3Label')}</span>
                   </div>
+                </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/flow-accounting" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
                 </div>
               </div>
 
@@ -507,6 +562,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-lbl">{t('presentation.slides.7.stat3Label')}</span>
                   </div>
                 </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/dustout-platform" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
+                </div>
               </div>
 
               <div className="deck-case-preview">
@@ -558,6 +627,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-val">{t('presentation.slides.8.stat3')}</span>
                     <span className="deck-metric-lbl">{t('presentation.slides.8.stat3Label')}</span>
                   </div>
+                </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/crm-system" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
                 </div>
               </div>
 
@@ -611,6 +694,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-lbl">{t('presentation.slides.9.stat3Label')}</span>
                   </div>
                 </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/supermarket-pos" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
+                </div>
               </div>
 
               <div className="deck-case-preview">
@@ -663,6 +760,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-lbl">{t('presentation.slides.10.stat3Label')}</span>
                   </div>
                 </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/zamzam-system" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
+                </div>
               </div>
 
               <div className="deck-case-preview">
@@ -714,6 +825,20 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     <span className="deck-metric-val">{t('presentation.slides.11.stat3')}</span>
                     <span className="deck-metric-lbl">{t('presentation.slides.11.stat3Label')}</span>
                   </div>
+                </div>
+
+                <div className="deck-case-action-row">
+                  <Link 
+                    to="/project/quran-audio-platform" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
                 </div>
               </div>
 
@@ -812,38 +937,84 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         );
 
       case 14:
-        // Contact & CTA
+        // Guarantees & Quality Standards
         return (
-          <div className="deck-slide deck-slide-contact">
+          <div className="deck-slide">
             <div className="deck-slide-header">
               <span className="deck-slide-tag">{t('presentation.slides.14.tag')}</span>
               <h2 className="deck-slide-title text-gradient">{t('presentation.slides.14.title')}</h2>
               <p className="deck-slide-subtitle">{t('presentation.slides.14.subtitle')}</p>
             </div>
 
+            <div className="deck-guarantee-grid">
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <Lock size={28} />
+                </div>
+                <h3>{t('presentation.slides.14.guarantee1Title')}</h3>
+                <p>{t('presentation.slides.14.guarantee1Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <FileCode size={28} />
+                </div>
+                <h3>{t('presentation.slides.14.guarantee2Title')}</h3>
+                <p>{t('presentation.slides.14.guarantee2Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <ShieldCheck size={28} />
+                </div>
+                <h3>{t('presentation.slides.14.guarantee3Title')}</h3>
+                <p>{t('presentation.slides.14.guarantee3Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <GraduationCap size={28} />
+                </div>
+                <h3>{t('presentation.slides.14.guarantee4Title')}</h3>
+                <p>{t('presentation.slides.14.guarantee4Desc')}</p>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 15:
+        // Contact & CTA
+        return (
+          <div className="deck-slide deck-slide-contact">
+            <div className="deck-slide-header">
+              <span className="deck-slide-tag">{t('presentation.slides.15.tag')}</span>
+              <h2 className="deck-slide-title text-gradient">{t('presentation.slides.15.title')}</h2>
+              <p className="deck-slide-subtitle">{t('presentation.slides.15.subtitle')}</p>
+            </div>
+
             <div className="deck-contact-layout">
               <div className="deck-contact-info">
-                <p className="deck-contact-highlight">{t('presentation.slides.14.ctaText')}</p>
+                <p className="deck-contact-highlight">{t('presentation.slides.15.ctaText')}</p>
 
                 <div className="deck-contact-list">
                   <div className="deck-contact-row">
                     <MapPin className="text-accent" size={22} />
-                    <span>{t('presentation.slides.14.location')}</span>
+                    <span>{t('presentation.slides.15.location')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Phone className="text-accent" size={22} />
-                    <span dir="ltr">{t('presentation.slides.14.phones')}</span>
+                    <span dir="ltr">{t('presentation.slides.15.phones')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Mail className="text-accent" size={22} />
-                    <span>{t('presentation.slides.14.email')}</span>
+                    <span>{t('presentation.slides.15.email')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Globe className="text-accent" size={22} />
-                    <span>{t('presentation.slides.14.website')}</span>
+                    <span>{t('presentation.slides.15.website')}</span>
                   </div>
                 </div>
 
@@ -856,7 +1027,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     onMouseEnter={() => setIsHovering?.(true)}
                     onMouseLeave={() => setIsHovering?.(false)}
                   >
-                    <MessageSquare size={18} /> {t('presentation.slides.14.whatsappBtn')}
+                    <MessageSquare size={18} /> {t('presentation.slides.15.whatsappBtn')}
                   </a>
                   <button 
                     onClick={() => {
@@ -869,7 +1040,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     onMouseEnter={() => setIsHovering?.(true)}
                     onMouseLeave={() => setIsHovering?.(false)}
                   >
-                    <Send size={18} /> {t('presentation.slides.14.consultationBtn')}
+                    <Send size={18} /> {t('presentation.slides.15.consultationBtn')}
                   </button>
                 </div>
               </div>
@@ -894,8 +1065,26 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
 
   const progressPercent = ((currentSlide - 1) / (TOTAL_SLIDES - 1)) * 100;
 
+  const slidesCatalog = [
+    { num: 1, tag: t('presentation.slides.1.tag'), title: t('presentation.slides.1.title'), icon: Sparkles },
+    { num: 2, tag: t('presentation.slides.2.tag'), title: t('presentation.slides.2.title'), icon: Award },
+    { num: 3, tag: t('presentation.slides.3.tag'), title: t('presentation.slides.3.title'), icon: Laptop },
+    { num: 4, tag: t('presentation.slides.4.tag'), title: t('presentation.slides.4.title'), icon: Zap },
+    { num: 5, tag: t('presentation.slides.5.tag'), title: t('presentation.slides.5.title'), icon: Monitor },
+    { num: 6, tag: t('presentation.slides.6.tag'), title: t('presentation.slides.6.title'), icon: Layers },
+    { num: 7, tag: t('presentation.slides.7.tag'), title: t('presentation.slides.7.title'), icon: Globe },
+    { num: 8, tag: t('presentation.slides.8.tag'), title: t('presentation.slides.8.title'), icon: Server },
+    { num: 9, tag: t('presentation.slides.9.tag'), title: t('presentation.slides.9.title'), icon: Monitor },
+    { num: 10, tag: t('presentation.slides.10.tag'), title: t('presentation.slides.10.title'), icon: Laptop },
+    { num: 11, tag: t('presentation.slides.11.tag'), title: t('presentation.slides.11.title'), icon: Sparkles },
+    { num: 12, tag: t('presentation.slides.12.tag'), title: t('presentation.slides.12.title'), icon: Award },
+    { num: 13, tag: t('presentation.slides.13.tag'), title: t('presentation.slides.13.title'), icon: Zap },
+    { num: 14, tag: t('presentation.slides.14.tag'), title: t('presentation.slides.14.title'), icon: ShieldCheck },
+    { num: 15, tag: t('presentation.slides.15.tag'), title: t('presentation.slides.15.title'), icon: Send },
+  ];
+
   return (
-    <div className={`deck-container ${isFullscreen ? 'deck-fullscreen' : ''}`}>
+    <div className={`deck-container ${isFullscreen ? 'deck-fullscreen' : ''} ${isLaserMode ? 'deck-laser-mode' : ''}`}>
       {/* Top Deck Header Bar */}
       <header className="deck-top-bar">
         <div className="deck-top-left">
@@ -924,6 +1113,30 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         </div>
 
         <div className="deck-top-right">
+          <button 
+            type="button"
+            className="deck-action-btn"
+            onClick={() => setShowGrid(true)}
+            onMouseEnter={() => setIsHovering?.(true)}
+            onMouseLeave={() => setIsHovering?.(false)}
+            title={t('presentation.gridOverview') + ' (G)'}
+          >
+            <LayoutGrid size={18} />
+            <span className="deck-btn-label">{t('presentation.gridOverview')}</span>
+          </button>
+
+          <button 
+            type="button"
+            className={`deck-action-btn ${isLaserMode ? 'deck-laser-btn-active' : ''}`}
+            onClick={() => setIsLaserMode(prev => !prev)}
+            onMouseEnter={() => setIsHovering?.(true)}
+            onMouseLeave={() => setIsHovering?.(false)}
+            title={t('presentation.laserPointer') + ' (L)'}
+          >
+            <Radio size={18} />
+            <span className="deck-btn-label">{t('presentation.laserPointer')}</span>
+          </button>
+
           <button 
             type="button"
             className="deck-action-btn"
@@ -989,6 +1202,19 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         </AnimatePresence>
       </main>
 
+      {/* Laser Pointer Tool */}
+      {isLaserMode && (
+        <div 
+          className="deck-laser-dot"
+          style={{
+            left: `${laserPos.x}px`,
+            top: `${laserPos.y}px`
+          }}
+        >
+          <div className="deck-laser-pulse"></div>
+        </div>
+      )}
+
       {/* Bottom Floating Navigation Controls */}
       <footer className="deck-bottom-bar">
         <div className="deck-shortcuts-hint">
@@ -1036,6 +1262,80 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         </div>
       </footer>
 
+      {/* Slide Grid Drawer Modal */}
+      <AnimatePresence>
+        {showGrid && (
+          <motion.div 
+            className="deck-grid-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowGrid(false)}
+          >
+            <motion.div 
+              className="deck-grid-modal"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="deck-grid-header">
+                <div className="deck-grid-title-group">
+                  <LayoutGrid size={22} className="text-accent" />
+                  <h2>{t('presentation.gridOverview')}</h2>
+                  <span className="deck-grid-count">{TOTAL_SLIDES} {isRTL ? 'شريحة' : 'Slides'}</span>
+                </div>
+                <button 
+                  type="button" 
+                  className="deck-grid-close-btn"
+                  onClick={() => setShowGrid(false)}
+                  title={t('presentation.closeGrid')}
+                  onMouseEnter={() => setIsHovering?.(true)}
+                  onMouseLeave={() => setIsHovering?.(false)}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="deck-grid-cards">
+                {slidesCatalog.map((item) => {
+                  const IconComponent = item.icon;
+                  const isActive = currentSlide === item.num;
+                  return (
+                    <button
+                      key={item.num}
+                      type="button"
+                      className={`deck-grid-card ${isActive ? 'active' : ''}`}
+                      onClick={() => {
+                        goToSlide(item.num);
+                        setShowGrid(false);
+                      }}
+                      onMouseEnter={() => setIsHovering?.(true)}
+                      onMouseLeave={() => setIsHovering?.(false)}
+                    >
+                      <div className="deck-grid-card-top">
+                        <span className="deck-grid-num">{item.num.toString().padStart(2, '0')}</span>
+                        <div className="deck-grid-card-icon">
+                          <IconComponent size={18} />
+                        </div>
+                      </div>
+                      <span className="deck-grid-tag">{item.tag}</span>
+                      <h4 className="deck-grid-card-title">{item.title}</h4>
+                      {isActive && (
+                        <div className="deck-grid-active-badge">
+                          <CheckCircle2 size={14} />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Printable All-Slides Container for PDF Export */}
       <div className="deck-print-container">
         {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
@@ -1047,12 +1347,15 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                   alt="Zamzam Tech" 
                   className="deck-print-logo"
                 />
-                <span className="deck-print-brand">Zamzam Tech • Company Profile</span>
+                <span className="deck-print-brand">Zamzam Tech • Company Profile 2026</span>
               </div>
               <span className="deck-print-page-num">{idx + 1} / {TOTAL_SLIDES}</span>
             </div>
             <div className="deck-print-page-content">
               {renderSlideContent(idx + 1)}
+            </div>
+            <div className="deck-print-page-footer">
+              <span>Zamzam Tech Software & Digital Solutions • +201009693397 • zamzamtech006@gmail.com</span>
             </div>
           </div>
         ))}
