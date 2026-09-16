@@ -169,7 +169,7 @@
         "point4Desc": "Direct WhatsApp & Telegram automated messaging alongside internal local area network (LAN) sharing without external servers."
       },
       "5": {
-        "tag": "Case Study 1",
+        "tag": "Portfolio • Centers & Education",
         "title": "Center Control System",
         "subtitle": "High-Speed Management Platform for Educational Hubs & Schools",
         "desc": "An offline-first desktop application engineered with Rust and Tauri v2. Integrates sub-100ms barcode attendance, automated WhatsApp & Telegram parental alerts, dynamic multi-tier pricing, and hardware fingerprint licensing.",
@@ -182,7 +182,7 @@
         "stat3Label": "Offline Resilience"
       },
       "6": {
-        "tag": "Case Study 2",
+        "tag": "Portfolio • ERP & Accounting",
         "title": "Flow Accounting System",
         "subtitle": "Comprehensive ERP & Point-of-Sale Platform for Commercial Businesses",
         "desc": "A complete inventory, sales, purchases, and automated Profit & Loss (P&L) accounting system. Features built-in local area network sharing (LAN) to sync cashiers over internal Wi-Fi, alongside a 1-click Privacy Mode for customer-facing privacy.",
@@ -195,7 +195,7 @@
         "stat3Label": "Privacy Mode 👁️"
       },
       "7": {
-        "tag": "Case Study 3 • E-Commerce",
+        "tag": "Portfolio • E-Commerce & Retail",
         "title": "DustOut E-Commerce Platform",
         "subtitle": "Dual-Mode E-Commerce & High-Converting Marketing Hub",
         "desc": "An all-in-one digital platform for cleaning equipment featuring dual-mode direct sales and monthly equipment rentals, slide-over interactive cart, complete admin dashboard (CRUD), and multi-platform ad pixel tracking (Meta, TikTok, Snapchat, Clarity).",
@@ -208,7 +208,7 @@
         "stat3Label": "Page Load Time"
       },
       "8": {
-        "tag": "Case Study 4 • Cloud Enterprise",
+        "tag": "Portfolio • Cloud CRM & Enterprise",
         "title": "Smart CRM & Client System",
         "subtitle": "High-Performance Client-Server CRM with RBAC & Fast APIs",
         "desc": "A robust cloud web application built with a scalable Client-Server architecture. Features strict Role-Based Access Control (RBAC) to safeguard confidential data, large dataset streaming, and instant Excel report exports.",
@@ -221,7 +221,7 @@
         "stat3Label": "Excel Export"
       },
       "9": {
-        "tag": "Case Study 5 • Retail & POS",
+        "tag": "Portfolio • Retail & POS Systems",
         "title": "Smart Supermarket & Retail POS",
         "subtitle": "Fast Offline-First POS, Shift Earnings & Thermal Receipts",
         "desc": "A lightning-fast, 100% offline desktop POS application engineered for supermarkets and retail stores. Features fast barcode lookups, direct thermal receipt printing, shift reconciliation, and real-time net profit analytics.",
@@ -234,7 +234,7 @@
         "stat3Label": "Shift Net Profit"
       },
       "10": {
-        "tag": "Case Study 6 • Repair & Workshop",
+        "tag": "Portfolio • Repair & Workshop Hub",
         "title": "Zamzam Repair & Workshop Hub",
         "subtitle": "End-to-End Repair Lifecycle, Ticketing & Billing Management",
         "desc": "A specialized desktop system for electronics and computer repair centers. Digitizes the full repair lifecycle from check-in to handover, tracking parts, repair costs, technician assignments, printable invoices, and CSV database backups.",
@@ -247,7 +247,7 @@
         "stat3Label": "CSV Fast Backup"
       },
       "11": {
-        "tag": "Case Study 7 • PWA & Media",
+        "tag": "Portfolio • Web Apps & PWA",
         "title": "Quran Audio Platform & PWA",
         "subtitle": "Progressive Web App with Custom Audio Engine & Offline Mode",
         "desc": "A modern Progressive Web App (PWA) tailored for seamless Quranic audio playback. Features a custom continuous audio player, natural sorting algorithm for surahs, responsive Light/Dark theme, and full offline caching via Service Workers.",
