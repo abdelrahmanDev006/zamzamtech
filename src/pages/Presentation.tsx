@@ -1046,13 +1046,28 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
               </div>
 
               <div className="deck-contact-branding">
-                <img 
-                  src={`${import.meta.env.BASE_URL}logo.png`} 
-                  alt="Zamzam Tech" 
-                  className="deck-contact-logo"
-                />
-                <h3 className="text-gradient">Zamzam Tech</h3>
-                <p className="deck-slogan">{t('hero.subtitle')}</p>
+                <div className="deck-contact-logo-box">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}logo.png`} 
+                    alt="Zamzam Tech" 
+                    className="deck-contact-logo"
+                  />
+                </div>
+                
+                <div className="deck-contact-trust-badges">
+                  <div className="deck-trust-item">
+                    <ShieldCheck size={18} className="text-accent" />
+                    <span>{t('presentation.slides.1.badge1')}</span>
+                  </div>
+                  <div className="deck-trust-item">
+                    <Zap size={18} className="text-accent" />
+                    <span>{t('presentation.slides.1.badge2')}</span>
+                  </div>
+                  <div className="deck-trust-item">
+                    <Clock size={18} className="text-accent" />
+                    <span>{t('presentation.slides.1.badge3')}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
