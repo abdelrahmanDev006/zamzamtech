@@ -10,6 +10,8 @@ import {
   Printer,
   X,
   Globe,
+  Sun,
+  Moon,
   Monitor,
   Laptop,
   Palette,
@@ -39,8 +41,21 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   const isRTL = i18n.language === 'ar';
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => {
+      const next = prev === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', next);
+      return next;
+    });
+  };
 
   const goToSlide = useCallback((newSlide: number) => {
     if (newSlide < 1 || newSlide > TOTAL_SLIDES) return;
@@ -697,6 +712,17 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         </div>
 
         <div className="deck-top-right">
+          <button 
+            type="button"
+            className="deck-action-btn"
+            onClick={toggleTheme}
+            onMouseEnter={() => setIsHovering?.(true)}
+            onMouseLeave={() => setIsHovering?.(false)}
+            title={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
           <button 
             type="button"
             className="deck-action-btn"
