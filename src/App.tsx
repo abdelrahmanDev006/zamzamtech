@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
@@ -8,9 +8,10 @@ import {
   Headphones, Zap, Loader2 
 } from 'lucide-react';
 import { projectsData } from './data/projects';
-import ProjectDetails from './pages/ProjectDetails';
-import ThankYou from './pages/ThankYou';
-import Presentation from './pages/Presentation';
+
+const ProjectDetails = lazy(() => import('./pages/ProjectDetails'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
+const Presentation = lazy(() => import('./pages/Presentation'));
 
 interface HomeProps {
   setIsHovering: (val: boolean) => void;
@@ -342,7 +343,10 @@ const Home: React.FC<HomeProps> = ({ setIsHovering }) => {
               className="contact-form" 
               action="https://formsubmit.co/zamzamtech006@gmail.com" 
               method="POST"
-              onSubmit={() => setIsSubmitting(true)}
+              onSubmit={() => {
+                setIsSubmitting(true);
+                window.setTimeout(() => setIsSubmitting(false), 15000);
+              }}
             >
               <input type="hidden" name="_next" value="https://abdelrahmandev006.github.io/zamzamtech/#/thank-you" />
               <input type="hidden" name="_subject" value="ZAMZAM TECH 🚀 - رسالة جديدة من الموقع" />
@@ -574,13 +578,21 @@ const AppContent = () => {
         </nav>
       )}
 
-      <Routes>
-        <Route path="/" element={<Home setIsHovering={setIsHovering} />} />
-        <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
-        <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
-        <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} />} />
-        <Route path="*" element={<Home setIsHovering={setIsHovering} />} />
-      </Routes>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Loader2 size={40} className="animate-spin" />
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home setIsHovering={setIsHovering} />} />
+          <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
+          <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
+          <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} />} />
+          <Route path="*" element={<Home setIsHovering={setIsHovering} />} />
+        </Routes>
+      </Suspense>
 
       {!isPresentation && (
         <footer className="footer">
