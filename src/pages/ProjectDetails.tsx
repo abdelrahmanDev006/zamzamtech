@@ -128,6 +128,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
   }
 
   const isRTL = i18n.language === 'ar';
+  const features = project.featureKeys?.map(key => t(key)) ?? project.features ?? [];
   const ArrowBack = isRTL ? ArrowRight : ArrowLeft;
 
   const fadeUp: any = {
@@ -200,13 +201,13 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ setIsHovering }) => {
         </div>
 
         {/* Key Features List */}
-        {project.features && project.features.length > 0 && (
+        {features.length > 0 && (
           <div style={{ marginBottom: '5rem' }}>
             <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>
               {t('portfolio.features')}
             </h3>
             <div className="features-grid">
-              {project.features.map((feat, idx) => (
+              {features.map((feat, idx) => (
                 <div key={idx} className="feature-badge-card">
                   <div className="feature-icon-wrapper">
                     <CheckCircle2 size={24} />

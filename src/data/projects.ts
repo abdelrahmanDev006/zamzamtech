@@ -5,6 +5,7 @@ export interface ProjectItem {
   mainImage: string;
   gallery: string[];
   features?: string[];
+  featureKeys?: string[];
 }
 
 const BASE = import.meta.env.BASE_URL.endsWith('/')
@@ -14,6 +15,24 @@ const BASE = import.meta.env.BASE_URL.endsWith('/')
 const img = (filename: string) => `${BASE}${filename.replace(/^\//, '')}`;
 
 export const projectsData: ProjectItem[] = [
+  {
+    id: 'riwaq-platform',
+    category: 'web',
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Node.js', 'Express 5', 'PostgreSQL', 'Prisma ORM', 'Redis', 'S3-compatible Storage'],
+    featureKeys: [
+      'portfolio.riwaqFeatures.academies',
+      'portfolio.riwaqFeatures.learning',
+      'portfolio.riwaqFeatures.video',
+      'portfolio.riwaqFeatures.management'
+    ],
+    mainImage: img('project-riwaq.png'),
+    gallery: [
+      img('riwaq-1.png'),
+      img('riwaq-2.png'),
+      img('riwaq-3.png'),
+      img('riwaq-4.png')
+    ]
+  },
   {
     id: 'center-control',
     category: 'desktop',

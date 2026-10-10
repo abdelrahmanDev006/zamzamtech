@@ -16,7 +16,7 @@ Marketing website and interactive company presentation for **Zamzam Tech**, a so
 | --- | --- |
 | `/` | Landing page: hero, services, process, filterable portfolio, contact form (FormSubmit) |
 | `/project/:id` | Project details: tech stack, features, gallery with lightbox |
-| `/presentation` | 15-slide interactive deck (keyboard nav, fullscreen, laser pointer, slide grid, PDF print) |
+| `/presentation` | 16-slide interactive deck (keyboard nav, fullscreen, laser pointer, slide grid, PDF print) |
 | `/thank-you` | Post-submission confirmation page |
 
 Project data lives in `src/data/projects.ts`; all copy is in `src/locales/{ar,en}.json`.

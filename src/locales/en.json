@@ -27,7 +27,7 @@
     "backendDesc": "Robust server architecture and scalable cloud infrastructure."
   },
   "stats": {
-    "projects": "+7",
+    "projects": "+8",
     "projectsLabel": "Delivered Systems & Platforms",
     "offline": "100%",
     "offlineLabel": "Offline-First & Cloud Ready",
@@ -85,7 +85,16 @@
     "ctaDesc": "The Zamzam Tech team is ready to engineer your idea into a fast, secure, and fully customized software solution.",
     "ctaBtn": "Get a Free Tech Consultation",
     "clickToZoom": "Click image to zoom",
-    "imageCounter": "Image {{current}} of {{total}}"
+    "imageCounter": "Image {{current}} of {{total}}",
+    "title_riwaq-platform": "Riwaq E-Learning Platform",
+    "cat_riwaq-platform": "Multi-Tenant E-Learning SaaS",
+    "desc_riwaq-platform": "A cloud-based learning platform that lets teachers and academies launch independent learning portals with their own branding, dedicated subdomains, and isolated data. Riwaq brings courses, lessons, students, and quizzes together, with an Arabic-first student experience for browsing content and following learning progress.\n\nThe platform includes a video player with dynamic watermarks and time-limited access URLs to help deter unauthorized content sharing. Teachers can manage subscriptions and discount coupons, review electronic-wallet and InstaPay transfer receipts, grade essay answers, and track student results. Dedicated teacher and super-admin dashboards provide role-based control over academy operations.",
+    "riwaqFeatures": {
+      "academies": "Independent branded academies with dedicated subdomains and isolated data",
+      "learning": "Course, lesson, and quiz management with student results tracking",
+      "video": "Video player with dynamic watermarks and time-limited access URLs",
+      "management": "Teacher and admin dashboards with subscriptions, coupons, and transfer review"
+    }
   },
   "contact": {
     "title": "Get a Free Tech Consultation",
@@ -260,10 +269,23 @@
         "stat3Label": "Service Worker Cache"
       },
       "12": {
+        "tag": "Case Study • E-Learning & Cloud Platforms",
+        "title": "Riwaq E-Learning Platform",
+        "subtitle": "Independent academies with integrated content and student management",
+        "desc": "A multi-tenant SaaS platform that lets teachers launch branded learning portals. It combines course, quiz, and student management with dynamic video watermarks, subscriptions, discount coupons, and payment transfer review.",
+        "tech": "Next.js 16 • React 19 • TypeScript • Express 5 • PostgreSQL • Prisma • Redis",
+        "stat1": "SaaS",
+        "stat1Label": "Independent academies",
+        "stat2": "LMS",
+        "stat2Label": "Courses, quizzes & students",
+        "stat3": "RTL",
+        "stat3Label": "Arabic-first experience"
+      },
+      "13": {
         "tag": "Key Metrics & Trust",
         "title": "Numbers That Reflect Our Engineering Quality",
         "subtitle": "A Proven Track Record of Stable Deployments",
-        "stat1Num": "+7",
+        "stat1Num": "+8",
         "stat1Title": "Commercial Systems Deployed",
         "stat1Desc": "Educational ERPs, POS accounting software, maintenance ticketing, and e-commerce platforms.",
         "stat2Num": "100%",
@@ -276,7 +298,7 @@
         "stat4Title": "Continuous Support & Onboarding",
         "stat4Desc": "Dedicated engineering support, team training, and regular software enhancements."
       },
-      "13": {
+      "14": {
         "tag": "Our Methodology",
         "title": "How We Turn Ideas into Reliable Software",
         "subtitle": "Our End-to-End Development Lifecycle",
@@ -293,7 +315,7 @@
         "step4Title": "Deployment, Training & Support",
         "step4Desc": "On-site installation, employee training, and ongoing proactive maintenance warranties."
       },
-      "14": {
+      "15": {
         "tag": "Quality Standards, NDA & SLA",
         "title": "Our Enterprise Quality Commitments",
         "subtitle": "Security, Source Code Ownership & Long-Term Guarantees for Our Partners",
@@ -306,7 +328,7 @@
         "guarantee4Title": "Live Onboarding & Team Training",
         "guarantee4Desc": "Hands-on staff workshops and video walkthroughs ensuring your operational team operates the system at peak productivity."
       },
-      "15": {
+      "16": {
         "tag": "Start Your Project",
         "title": "Ready to Elevate Your Digital Infrastructure?",
         "subtitle": "Contact the Zamzam Tech team today for a complimentary technical consultation.",

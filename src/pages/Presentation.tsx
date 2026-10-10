@@ -41,7 +41,7 @@ interface PresentationProps {
   setIsHovering?: (val: boolean) => void;
 }
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 16;
 
 const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
   const { t, i18n } = useTranslation();
@@ -181,7 +181,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
     })
   };
 
-  // All 7 Portfolio Projects
+  // Portfolio Projects
   const centerProject = projectsData.find(p => p.id === 'center-control');
   const flowProject = projectsData.find(p => p.id === 'flow-accounting');
   const dustoutProject = projectsData.find(p => p.id === 'dustout-platform');
@@ -189,6 +189,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
   const posProject = projectsData.find(p => p.id === 'supermarket-pos');
   const zamzamProject = projectsData.find(p => p.id === 'zamzam-system');
   const quranProject = projectsData.find(p => p.id === 'quran-audio-platform');
+  const riwaqProject = projectsData.find(p => p.id === 'riwaq-platform');
 
   const renderSlideContent = (index: number) => {
     switch (index) {
@@ -861,7 +862,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
         );
 
       case 12:
-        // Key Metrics & Trust
+        // Case Study 8: Riwaq E-Learning Platform
         return (
           <div className="deck-slide">
             <div className="deck-slide-header">
@@ -870,36 +871,64 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
               <p className="deck-slide-subtitle">{t('presentation.slides.12.subtitle')}</p>
             </div>
 
-            <div className="deck-stats-grid">
-              <div className="deck-stat-card">
-                <div className="deck-stat-num text-gradient">{t('presentation.slides.12.stat1Num')}</div>
-                <h4>{t('presentation.slides.12.stat1Title')}</h4>
-                <p>{t('presentation.slides.12.stat1Desc')}</p>
+            <div className="deck-case-layout">
+              <div className="deck-case-info">
+                <p className="deck-case-desc">{t('presentation.slides.12.desc')}</p>
+
+                <div className="deck-case-tech">
+                  <span className="deck-tech-badge">{t('presentation.slides.12.tech')}</span>
+                </div>
+
+                <div className="deck-case-metrics">
+                  <div className="deck-metric-box">
+                    <span className="deck-metric-val">{t('presentation.slides.12.stat1')}</span>
+                    <span className="deck-metric-lbl">{t('presentation.slides.12.stat1Label')}</span>
+                  </div>
+                  <div className="deck-metric-box">
+                    <span className="deck-metric-val">{t('presentation.slides.12.stat2')}</span>
+                    <span className="deck-metric-lbl">{t('presentation.slides.12.stat2Label')}</span>
+                  </div>
+                  <div className="deck-metric-box">
+                    <span className="deck-metric-val">{t('presentation.slides.12.stat3')}</span>
+                    <span className="deck-metric-lbl">{t('presentation.slides.12.stat3Label')}</span>
+                  </div>
+                </div>
+
+                <div className="deck-case-action-row">
+                  <Link
+                    to="/project/riwaq-platform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="deck-case-btn"
+                    onMouseEnter={() => setIsHovering?.(true)}
+                    onMouseLeave={() => setIsHovering?.(false)}
+                  >
+                    <ExternalLink size={16} />
+                    <span>{t('presentation.viewProjectDetails')}</span>
+                  </Link>
+                </div>
               </div>
 
-              <div className="deck-stat-card">
-                <div className="deck-stat-num text-gradient">{t('presentation.slides.12.stat2Num')}</div>
-                <h4>{t('presentation.slides.12.stat2Title')}</h4>
-                <p>{t('presentation.slides.12.stat2Desc')}</p>
-              </div>
-
-              <div className="deck-stat-card">
-                <div className="deck-stat-num text-gradient">{t('presentation.slides.12.stat3Num')}</div>
-                <h4>{t('presentation.slides.12.stat3Title')}</h4>
-                <p>{t('presentation.slides.12.stat3Desc')}</p>
-              </div>
-
-              <div className="deck-stat-card">
-                <div className="deck-stat-num text-gradient">{t('presentation.slides.12.stat4Num')}</div>
-                <h4>{t('presentation.slides.12.stat4Title')}</h4>
-                <p>{t('presentation.slides.12.stat4Desc')}</p>
+              <div className="deck-case-preview">
+                <div className="deck-browser-frame">
+                  <div className="deck-browser-dots">
+                    <span className="deck-dot red"></span>
+                    <span className="deck-dot yellow"></span>
+                    <span className="deck-dot green"></span>
+                  </div>
+                  <img
+                    src={riwaqProject?.mainImage || `${import.meta.env.BASE_URL}project-riwaq.png`}
+                    alt={t('portfolio.title_riwaq-platform')}
+                    className="deck-preview-img"
+                  />
+                </div>
               </div>
             </div>
           </div>
         );
 
       case 13:
-        // Methodology
+        // Key Metrics & Trust
         return (
           <div className="deck-slide">
             <div className="deck-slide-header">
@@ -908,36 +937,36 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
               <p className="deck-slide-subtitle">{t('presentation.slides.13.subtitle')}</p>
             </div>
 
-            <div className="deck-steps-grid">
-              <div className="deck-step-card">
-                <div className="deck-step-badge">{t('presentation.slides.13.step1Num')}</div>
-                <h3>{t('presentation.slides.13.step1Title')}</h3>
-                <p>{t('presentation.slides.13.step1Desc')}</p>
+            <div className="deck-stats-grid">
+              <div className="deck-stat-card">
+                <div className="deck-stat-num text-gradient">{t('presentation.slides.13.stat1Num')}</div>
+                <h4>{t('presentation.slides.13.stat1Title')}</h4>
+                <p>{t('presentation.slides.13.stat1Desc')}</p>
               </div>
 
-              <div className="deck-step-card">
-                <div className="deck-step-badge">{t('presentation.slides.13.step2Num')}</div>
-                <h3>{t('presentation.slides.13.step2Title')}</h3>
-                <p>{t('presentation.slides.13.step2Desc')}</p>
+              <div className="deck-stat-card">
+                <div className="deck-stat-num text-gradient">{t('presentation.slides.13.stat2Num')}</div>
+                <h4>{t('presentation.slides.13.stat2Title')}</h4>
+                <p>{t('presentation.slides.13.stat2Desc')}</p>
               </div>
 
-              <div className="deck-step-card">
-                <div className="deck-step-badge">{t('presentation.slides.13.step3Num')}</div>
-                <h3>{t('presentation.slides.13.step3Title')}</h3>
-                <p>{t('presentation.slides.13.step3Desc')}</p>
+              <div className="deck-stat-card">
+                <div className="deck-stat-num text-gradient">{t('presentation.slides.13.stat3Num')}</div>
+                <h4>{t('presentation.slides.13.stat3Title')}</h4>
+                <p>{t('presentation.slides.13.stat3Desc')}</p>
               </div>
 
-              <div className="deck-step-card">
-                <div className="deck-step-badge">{t('presentation.slides.13.step4Num')}</div>
-                <h3>{t('presentation.slides.13.step4Title')}</h3>
-                <p>{t('presentation.slides.13.step4Desc')}</p>
+              <div className="deck-stat-card">
+                <div className="deck-stat-num text-gradient">{t('presentation.slides.13.stat4Num')}</div>
+                <h4>{t('presentation.slides.13.stat4Title')}</h4>
+                <p>{t('presentation.slides.13.stat4Desc')}</p>
               </div>
             </div>
           </div>
         );
 
       case 14:
-        // Guarantees & Quality Standards
+        // Methodology
         return (
           <div className="deck-slide">
             <div className="deck-slide-header">
@@ -946,75 +975,113 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
               <p className="deck-slide-subtitle">{t('presentation.slides.14.subtitle')}</p>
             </div>
 
-            <div className="deck-guarantee-grid">
-              <div className="deck-guarantee-card">
-                <div className="deck-guarantee-icon">
-                  <Lock size={28} />
-                </div>
-                <h3>{t('presentation.slides.14.guarantee1Title')}</h3>
-                <p>{t('presentation.slides.14.guarantee1Desc')}</p>
+            <div className="deck-steps-grid">
+              <div className="deck-step-card">
+                <div className="deck-step-badge">{t('presentation.slides.14.step1Num')}</div>
+                <h3>{t('presentation.slides.14.step1Title')}</h3>
+                <p>{t('presentation.slides.14.step1Desc')}</p>
               </div>
 
-              <div className="deck-guarantee-card">
-                <div className="deck-guarantee-icon">
-                  <FileCode size={28} />
-                </div>
-                <h3>{t('presentation.slides.14.guarantee2Title')}</h3>
-                <p>{t('presentation.slides.14.guarantee2Desc')}</p>
+              <div className="deck-step-card">
+                <div className="deck-step-badge">{t('presentation.slides.14.step2Num')}</div>
+                <h3>{t('presentation.slides.14.step2Title')}</h3>
+                <p>{t('presentation.slides.14.step2Desc')}</p>
               </div>
 
-              <div className="deck-guarantee-card">
-                <div className="deck-guarantee-icon">
-                  <ShieldCheck size={28} />
-                </div>
-                <h3>{t('presentation.slides.14.guarantee3Title')}</h3>
-                <p>{t('presentation.slides.14.guarantee3Desc')}</p>
+              <div className="deck-step-card">
+                <div className="deck-step-badge">{t('presentation.slides.14.step3Num')}</div>
+                <h3>{t('presentation.slides.14.step3Title')}</h3>
+                <p>{t('presentation.slides.14.step3Desc')}</p>
               </div>
 
-              <div className="deck-guarantee-card">
-                <div className="deck-guarantee-icon">
-                  <GraduationCap size={28} />
-                </div>
-                <h3>{t('presentation.slides.14.guarantee4Title')}</h3>
-                <p>{t('presentation.slides.14.guarantee4Desc')}</p>
+              <div className="deck-step-card">
+                <div className="deck-step-badge">{t('presentation.slides.14.step4Num')}</div>
+                <h3>{t('presentation.slides.14.step4Title')}</h3>
+                <p>{t('presentation.slides.14.step4Desc')}</p>
               </div>
             </div>
           </div>
         );
 
       case 15:
-        // Contact & CTA
+        // Guarantees & Quality Standards
         return (
-          <div className="deck-slide deck-slide-contact">
+          <div className="deck-slide">
             <div className="deck-slide-header">
               <span className="deck-slide-tag">{t('presentation.slides.15.tag')}</span>
               <h2 className="deck-slide-title text-gradient">{t('presentation.slides.15.title')}</h2>
               <p className="deck-slide-subtitle">{t('presentation.slides.15.subtitle')}</p>
             </div>
 
+            <div className="deck-guarantee-grid">
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <Lock size={28} />
+                </div>
+                <h3>{t('presentation.slides.15.guarantee1Title')}</h3>
+                <p>{t('presentation.slides.15.guarantee1Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <FileCode size={28} />
+                </div>
+                <h3>{t('presentation.slides.15.guarantee2Title')}</h3>
+                <p>{t('presentation.slides.15.guarantee2Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <ShieldCheck size={28} />
+                </div>
+                <h3>{t('presentation.slides.15.guarantee3Title')}</h3>
+                <p>{t('presentation.slides.15.guarantee3Desc')}</p>
+              </div>
+
+              <div className="deck-guarantee-card">
+                <div className="deck-guarantee-icon">
+                  <GraduationCap size={28} />
+                </div>
+                <h3>{t('presentation.slides.15.guarantee4Title')}</h3>
+                <p>{t('presentation.slides.15.guarantee4Desc')}</p>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 16:
+        // Contact & CTA
+        return (
+          <div className="deck-slide deck-slide-contact">
+            <div className="deck-slide-header">
+              <span className="deck-slide-tag">{t('presentation.slides.16.tag')}</span>
+              <h2 className="deck-slide-title text-gradient">{t('presentation.slides.16.title')}</h2>
+              <p className="deck-slide-subtitle">{t('presentation.slides.16.subtitle')}</p>
+            </div>
+
             <div className="deck-contact-layout">
               <div className="deck-contact-info">
-                <p className="deck-contact-highlight">{t('presentation.slides.15.ctaText')}</p>
+                <p className="deck-contact-highlight">{t('presentation.slides.16.ctaText')}</p>
 
                 <div className="deck-contact-list">
                   <div className="deck-contact-row">
                     <MapPin className="text-accent" size={22} />
-                    <span>{t('presentation.slides.15.location')}</span>
+                    <span>{t('presentation.slides.16.location')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Phone className="text-accent" size={22} />
-                    <span dir="ltr">{t('presentation.slides.15.phones')}</span>
+                    <span dir="ltr">{t('presentation.slides.16.phones')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Mail className="text-accent" size={22} />
-                    <span>{t('presentation.slides.15.email')}</span>
+                    <span>{t('presentation.slides.16.email')}</span>
                   </div>
 
                   <div className="deck-contact-row">
                     <Globe className="text-accent" size={22} />
-                    <span>{t('presentation.slides.15.website')}</span>
+                    <span>{t('presentation.slides.16.website')}</span>
                   </div>
                 </div>
 
@@ -1027,7 +1094,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     onMouseEnter={() => setIsHovering?.(true)}
                     onMouseLeave={() => setIsHovering?.(false)}
                   >
-                    <MessageSquare size={18} /> {t('presentation.slides.15.whatsappBtn')}
+                    <MessageSquare size={18} /> {t('presentation.slides.16.whatsappBtn')}
                   </a>
                   <button 
                     onClick={() => {
@@ -1040,7 +1107,7 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
                     onMouseEnter={() => setIsHovering?.(true)}
                     onMouseLeave={() => setIsHovering?.(false)}
                   >
-                    <Send size={18} /> {t('presentation.slides.15.consultationBtn')}
+                    <Send size={18} /> {t('presentation.slides.16.consultationBtn')}
                   </button>
                 </div>
               </div>
@@ -1092,10 +1159,11 @@ const Presentation: React.FC<PresentationProps> = ({ setIsHovering }) => {
     { num: 9, tag: t('presentation.slides.9.tag'), title: t('presentation.slides.9.title'), icon: Monitor },
     { num: 10, tag: t('presentation.slides.10.tag'), title: t('presentation.slides.10.title'), icon: Laptop },
     { num: 11, tag: t('presentation.slides.11.tag'), title: t('presentation.slides.11.title'), icon: Sparkles },
-    { num: 12, tag: t('presentation.slides.12.tag'), title: t('presentation.slides.12.title'), icon: Award },
-    { num: 13, tag: t('presentation.slides.13.tag'), title: t('presentation.slides.13.title'), icon: Zap },
-    { num: 14, tag: t('presentation.slides.14.tag'), title: t('presentation.slides.14.title'), icon: ShieldCheck },
-    { num: 15, tag: t('presentation.slides.15.tag'), title: t('presentation.slides.15.title'), icon: Send },
+    { num: 12, tag: t('presentation.slides.12.tag'), title: t('presentation.slides.12.title'), icon: GraduationCap },
+    { num: 13, tag: t('presentation.slides.13.tag'), title: t('presentation.slides.13.title'), icon: Award },
+    { num: 14, tag: t('presentation.slides.14.tag'), title: t('presentation.slides.14.title'), icon: Zap },
+    { num: 15, tag: t('presentation.slides.15.tag'), title: t('presentation.slides.15.title'), icon: ShieldCheck },
+    { num: 16, tag: t('presentation.slides.16.tag'), title: t('presentation.slides.16.title'), icon: Send },
   ];
 
   return (
