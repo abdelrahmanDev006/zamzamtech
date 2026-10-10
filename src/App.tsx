@@ -589,7 +589,7 @@ const AppContent = () => {
           <Route path="/" element={<Home setIsHovering={setIsHovering} />} />
           <Route path="/project/:id" element={<ProjectDetails setIsHovering={setIsHovering} />} />
           <Route path="/thank-you" element={<ThankYou setIsHovering={setIsHovering} />} />
-          <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} />} />
+          <Route path="/presentation" element={<Presentation setIsHovering={setIsHovering} theme={theme} onToggleTheme={toggleTheme} />} />
           <Route path="*" element={<Home setIsHovering={setIsHovering} />} />
         </Routes>
       </Suspense>
