@@ -2,10 +2,8 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
-import { 
-  Sun, Moon, Globe, Monitor, Palette, Server, ArrowRight, Hexagon, 
-  Laptop, Phone, Menu, X, ArrowUp, MessageCircle, Layers, ShieldCheck, 
-  Headphones, Zap, Loader2 
+import {
+  Sun, Moon, Globe, ArrowRight, Hexagon, Phone, Menu, X, ArrowUp, MessageCircle, Loader2
 } from 'lucide-react';
 import { projectsData } from './data/projects';
 
@@ -100,123 +98,43 @@ const Home: React.FC<HomeProps> = ({ setIsHovering }) => {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <section className="stats-section">
+      <section id="services" className="section services-section" aria-labelledby="services-title">
         <div className="container">
-          <motion.div 
-            className="stats-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { icon: <Layers size={24} />, num: t('stats.projects'), label: t('stats.projectsLabel') },
-              { icon: <ShieldCheck size={24} />, num: t('stats.offline'), label: t('stats.offlineLabel') },
-              { icon: <Headphones size={24} />, num: t('stats.support'), label: t('stats.supportLabel') },
-              { icon: <Zap size={24} />, num: t('stats.uptime'), label: t('stats.uptimeLabel') },
-            ].map((stat, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={fadeUp} 
-                className="stat-card"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <div className="stat-icon">{stat.icon}</div>
-                <div className="stat-number text-accent">{stat.num}</div>
-                <div className="stat-label">{stat.label}</div>
-              </motion.div>
+          <div className="services-intro">
+            <div>
+              <span className="section-subtitle">{t('services.subtitle')}</span>
+              <h2 id="services-title" className="section-title">
+                {t('services.titleStart')} <span className="text-accent">{t('services.titleAccent')}</span>{t('services.titleEnd')}
+              </h2>
+            </div>
+            <p>{t('services.intro')}</p>
+          </div>
+          <ul className="services-list">
+            {['web', 'desktop', 'uiux', 'backend'].map((service) => (
+              <li key={service}>{t(`services.${service}`)}</li>
             ))}
-          </motion.div>
+          </ul>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="section">
+      <section id="process" className="section process-section" aria-labelledby="process-title">
         <div className="container">
-          <motion.div 
-            className="section-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-          >
-            <span className="section-subtitle">{t('services.subtitle')}</span>
-            <h2 className="section-title text-accent">{t('services.title')}</h2>
-          </motion.div>
-
-          <motion.div 
-            className="services-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { icon: <Monitor size={32}/>, title: t('services.web'), desc: t('services.webDesc') },
-              { icon: <Laptop size={32}/>, title: t('services.desktop'), desc: t('services.desktopDesc') },
-              { icon: <Palette size={32}/>, title: t('services.uiux'), desc: t('services.uiuxDesc') },
-              { icon: <Server size={32}/>, title: t('services.backend'), desc: t('services.backendDesc') },
-            ].map((service, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={fadeUp} 
-                className="service-card"
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-                }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <div className="service-icon">{service.icon}</div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-desc">{service.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section id="process" className="section" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-          >
-            <span className="section-subtitle">{t('process.subtitle')}</span>
-            <h2 className="section-title text-accent">{t('process.title')}</h2>
-          </motion.div>
-
-          <motion.div 
-            className="process-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
+          <span className="section-subtitle">{t('process.subtitle')}</span>
+          <h2 id="process-title" className="section-title">{t('process.title')}</h2>
+          <ol className="process-timeline">
             {[1, 2, 3, 4].map((step) => (
-              <motion.div 
-                key={step} 
-                variants={fadeUp} 
-                className="process-card"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <span className="process-number">{t(`process.step${step}_num`)}</span>
+              <li key={step}>
+                <span className="process-number" aria-hidden="true">{t(`process.step${step}_num`)}</span>
                 <h3 className="process-title">{t(`process.step${step}_title`)}</h3>
                 <p className="process-desc">{t(`process.step${step}_desc`)}</p>
-              </motion.div>
+              </li>
             ))}
-          </motion.div>
+          </ol>
+          <ul className="services-highlights">
+            <li><bdi>{t('stats.projects')}</bdi> {t('stats.delivered')}</li>
+            <li>{t('stats.offlineSupport')}</li>
+            <li>{t('stats.technicalSupport')}</li>
+          </ul>
         </div>
       </section>
 
@@ -324,7 +242,7 @@ const Home: React.FC<HomeProps> = ({ setIsHovering }) => {
                 <div className="contact-icon"><Globe /></div>
                 <div>
                   <h4 style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>{t('contact.emailUs')}</h4>
-                  <p className="service-desc">zamzamtech006@gmail.com</p>
+                  <p className="service-desc">zamzamtech0006@gmail.com</p>
                 </div>
               </div>
 
@@ -341,7 +259,7 @@ const Home: React.FC<HomeProps> = ({ setIsHovering }) => {
 
             <form 
               className="contact-form" 
-              action="https://formsubmit.co/zamzamtech006@gmail.com" 
+              action="https://formsubmit.co/zamzamtech0006@gmail.com"
               method="POST"
               onSubmit={() => {
                 setIsSubmitting(true);

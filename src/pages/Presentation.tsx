@@ -326,7 +326,7 @@ export default function Presentation({
             </a>
             <a
               className="profile-text-link"
-              href="mailto:zamzamtech006@gmail.com"
+              href="mailto:zamzamtech0006@gmail.com"
             >
               {ui('email')}
               <Forward size={18} />
@@ -334,9 +334,9 @@ export default function Presentation({
           </div>
           <div className="profile-contact-details">
             <img src={logo} className="profile-logo" alt="Zamzam Tech" />
-            <a href="mailto:zamzamtech006@gmail.com">
+            <a href="mailto:zamzamtech0006@gmail.com">
               <Mail size={20} />
-              <span dir="ltr">zamzamtech006@gmail.com</span>
+              <span dir="ltr">zamzamtech0006@gmail.com</span>
             </a>
             <a href="tel:+201009693397">
               <Phone size={20} />
@@ -557,7 +557,7 @@ export default function Presentation({
             </header>
             {renderSlide(index)}
             <footer>
-              <span>zamzamtech006@gmail.com</span>
+              <span>zamzamtech0006@gmail.com</span>
               <span dir="ltr">+20 100 969 3397</span>
             </footer>
           </article>

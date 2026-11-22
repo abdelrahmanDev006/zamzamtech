@@ -15,42 +15,37 @@
     "secondaryCta": "View Our Work"
   },
   "services": {
-    "title": "Elevate Your Business",
-    "subtitle": "What We Offer",
+    "titleStart": "Custom",
+    "titleAccent": "Software",
+    "titleEnd": " Development",
+    "subtitle": "Zamzam Tech Services",
+    "intro": "We design and develop web and desktop applications tailored to your business needs.",
     "web": "Web Development",
-    "webDesc": "High-performance, scalable web applications built with modern frameworks.",
     "desktop": "Desktop Apps",
-    "desktopDesc": "High-performance native and cross-platform desktop applications for Windows, macOS, and Linux.",
     "uiux": "UI/UX Design",
-    "uiuxDesc": "Beautiful, intuitive, and user-centered design experiences.",
-    "backend": "Backend & Cloud",
-    "backendDesc": "Robust server architecture and scalable cloud infrastructure."
+    "backend": "Backend & Cloud"
   },
   "stats": {
     "projects": "+8",
-    "projectsLabel": "Delivered Systems & Platforms",
-    "offline": "100%",
-    "offlineLabel": "Offline-First & Cloud Ready",
-    "support": "24/7",
-    "supportLabel": "Continuous Technical Support",
-    "uptime": "99.9%",
-    "uptimeLabel": "Ultra-Fast Speed & High Security"
+    "delivered": "projects and systems",
+    "offlineSupport": "Offline support",
+    "technicalSupport": "Technical support and consulting"
   },
   "process": {
-    "title": "How We Turn Ideas Into Reality",
+    "title": "From idea to launch.",
     "subtitle": "Our Process",
     "step1_num": "01",
-    "step1_title": "Architecture & Planning",
-    "step1_desc": "In-depth requirement analysis and selecting the ideal architecture for maximum performance and speed.",
+    "step1_title": "Understand the brief",
+    "step1_desc": "We identify the problem and set priorities with your team.",
     "step2_num": "02",
-    "step2_title": "UI/UX & Prototyping",
-    "step2_desc": "Crafting sleek, modern, and intuitive user experiences built with the highest design standards.",
+    "step2_title": "Review the design",
+    "step2_desc": "We walk through the interface and user experience with you.",
     "step3_num": "03",
-    "step3_title": "Clean Code & High Performance",
-    "step3_desc": "Writing scalable, clean code with robust security and high-throughput databases.",
+    "step3_title": "Build and test",
+    "step3_desc": "We build the system and check how it works and performs.",
     "step4_num": "04",
-    "step4_title": "Deployment & Support",
-    "step4_desc": "Seamless system launch, team onboarding, and continuous maintenance for sustained growth."
+    "step4_title": "Launch and support",
+    "step4_desc": "We launch the system and help your team get started."
   },
   "portfolio": {
     "title": "Selected Works",
